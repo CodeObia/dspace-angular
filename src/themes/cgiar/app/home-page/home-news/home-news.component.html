@@ -1,0 +1,22 @@
+<div class="background-image-container mt-ncs">
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <h2 class="display-4">WorldFish Digital Repository</h2>
+      <br>
+      <span>
+        WorldFish research is regarded as international public goods, and we are committed to the widespread dissemination of all our information products. One of the organizational objectives of WorldFish is to make all of its products open. This is in line with both the Center’s Research Data Management and Open Access Policy and the CGIAR Open Access and Data Management Policy. Opening our research, including publications, data and tools, ensures that more people can read and apply our research findings, thereby increasing the efficiency, reach and impact of our work.
+        <br>
+        <br>
+        This repository is built on the DSpace platform, and we hope this will make accessing our material easier.
+      </span>
+    </div>
+    <div class="search-container">
+      <ds-themed-search-form [inPlaceSearch]="false"
+                             [searchPlaceholder]="'home.search-form.placeholder' | translate"></ds-themed-search-form>
+    </div>
+  </div>
+  <picture class="background-image">
+    <source type="image/jpg" srcset="assets/cgiar/images/WF-banner.jpg">
+    <img alt="" [src]="'assets/cgiar/images/WF-banner.jpg'"/><!-- without the []="''" Firefox downloads both the fallback and the resolved image -->
+  </picture>
+</div>

@@ -1,0 +1,161 @@
+<ds-themed-results-back-button *ngIf="showBackButton | async" [back]="back"></ds-themed-results-back-button>
+<div class="row" *ngIf="iiifEnabled">
+  <div class="col-12">
+    <ds-mirador-viewer id="iiif-viewer"
+                       [object]="object"
+                       [searchable]="iiifSearchEnabled"
+                       [query]="iiifQuery$ | async">
+    </ds-mirador-viewer>
+  </div>
+</div>
+
+<div class="d-flex flex-row">
+  <ds-themed-item-page-title-field [item]="object" class="mr-auto">
+  </ds-themed-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <ds-item-page-social-share [item]="object"
+                               [socialIcons]="socialIcons"></ds-item-page-social-share>
+  </div>
+  </div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+  <div class="col-xs-12 col-md-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <ds-item-page-altmetric-field [item]="object"
+                                    [badgePopover]="'bottom'">
+      </ds-item-page-altmetric-field>
+      <ds-item-page-dimensions-field [item]="object"
+                                     [legend]="'hover-bottom'">
+      </ds-item-page-dimensions-field>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-9">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <ds-item-page-statistics [item]="object"
+                               [labelViews]="'item.page.statistics.views'"
+                               [labelDownloads]="'item.page.statistics.downloads'">
+      </ds-item-page-statistics>
+      <ds-item-page-license-field [item]="object"
+                                  [fields]="['dc.rights']">
+      </ds-item-page-license-field>
+      <h2 *ngIf="object.firstMetadataValue('cg.identifier.status')"
+          class="standalone-metadata-value">
+        {{ object.firstMetadataValue('cg.identifier.status') }}
+        <i *ngIf="object.firstMetadataValue('cg.identifier.status') === 'Open access'"
+           class="fa-solid fa-lock-open icon"></i>
+        <i *ngIf="object.firstMetadataValue('cg.identifier.status') !== 'Open access'"
+           class="fa-solid fa-lock icon"></i>
+      </h2>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-3">
+    <ng-container *ngIf="!(mediaViewer.image || mediaViewer.video)">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-themed-thumbnail [class]="object.firstMetadataValue('mel.file.thumbnail')"
+                             [thumbnail]="object?.thumbnail | async"></ds-themed-thumbnail>
+      </ds-metadata-field-wrapper>
+    </ng-container>
+    <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+      <ds-themed-media-viewer [item]="object"></ds-themed-media-viewer>
+    </div>
+    <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
+    <div class="unicode-bidi-text justify-text">
+      <ds-generic-item-page-field [item]="object"
+                                  [fields]="['dc.identifier.citation']"
+                                  [label]="'item.page.citation'">
+      </ds-generic-item-page-field>
+    </div>
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+    <div>
+      <a class="btn btn-outline-primary mb-3 mt-3" [routerLink]="[itemPageRoute + '/full']" role="button">
+        <i class="fas fa-info-circle"></i> {{ "item.page.link.full" | translate }}
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="unicode-bidi-text justify-text margin-bottom-15">
+      <span [innerHTML]="object.firstMetadataValue('dc.description.abstract')"></span>
+    </div>
+    <ds-item-page-uri-field [item]="object"
+                            [fields]="['dc.identifier.uri']"
+                            [label]="'item.page.uri'">
+    </ds-item-page-uri-field>
+    <ds-item-page-uri-field [item]="object"
+                            [fields]="['cg.identifier.doi']"
+                            [label]="'item.preview.dc.identifier.doi'">
+    </ds-item-page-uri-field>
+    <ds-item-page-other-uri-field [item]="object"
+                                  [fields]="['cg.identifier.url']"
+                                  [label]="'item.page.other.uri'">
+    </ds-item-page-other-uri-field>
+    <ds-item-page-orcid-field [item]="object"
+                              [fields]="['cg.creator.id']"
+                              [separator]="'<br/>'"
+                              [label]="'item.page.orcid'">
+    </ds-item-page-orcid-field>
+  </div>
+  <div class="col-xs-12 col-md-3 right-side">
+    <ds-generic-item-page-field [item]="object"
+                                [fields]="['dc.date.issued']"
+                                [label]="'item.page.date'">
+    </ds-generic-item-page-field>
+    <ds-item-page-metadata-search-link [item]="object"
+                                       [fields]="['dc.type']"
+                                       [label]="'list.items.page.type'"
+                                       [index]="'itemtype'">
+    </ds-item-page-metadata-search-link>
+    <ng-container *ngIf="object.firstMetadataValue('cg.identifier.ISIindexed')">
+      <h2 class="standalone-metadata-value mb-3">{{ object.firstMetadataValue('cg.identifier.ISIindexed') }}</h2>
+    </ng-container>
+    <ds-generic-item-page-field [item]="object"
+                                [fields]="['dc.publisher']"
+                                [label]="'item.page.publisher'">
+    </ds-generic-item-page-field>
+    <ds-item-page-metadata-search-link [item]="object"
+                                       [fields]="['cg.coverage.country']"
+                                       [label]="'item.page.country'"
+                                       [index]="'country'">
+    </ds-item-page-metadata-search-link>
+    <ds-item-page-metadata-search-link [item]="object"
+                                       [fields]="['dc.language']"
+                                       [label]="'item.page.language'"
+                                       [index]="'language'">
+    </ds-item-page-metadata-search-link>
+    <ds-item-page-sdg-field [item]="object"
+                            [fields]="['cg.subject.sdg']"
+                            [label]="'item.page.sdg'">
+    </ds-item-page-sdg-field>
+    <ds-themed-metadata-representation-list class="ds-item-page-mixed-author-field"
+                                            [parentItem]="object"
+                                            [itemType]="'Person'"
+                                            [metadataFields]="['dc.creator', 'dc.contributor']"
+                                            [label]="'relationships.isAuthorOf' | translate">
+    </ds-themed-metadata-representation-list>
+    <div class="unicode-bidi-text">
+      <ds-item-page-agrovoc [item]="object"
+                            [fields]="['mel.subject.agrovoc']"
+                            [separator]="'; '"
+                            [label]="'item.page.subject.agrovoc'"
+                            [index]="'subject'">
+      </ds-item-page-agrovoc>
+    </div>
+    <div class="unicode-bidi-text">
+      <ds-item-page-metadata-search-link [item]="object"
+                                         [fields]="['dc.subject']"
+                                         [separator]="'; '"
+                                         [label]="'item.page.subject'"
+                                         [index]="'subject'">
+      </ds-item-page-metadata-search-link>
+    </div>
+  </div>
+</div>

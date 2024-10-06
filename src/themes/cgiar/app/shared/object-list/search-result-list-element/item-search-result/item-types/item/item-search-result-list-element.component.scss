@@ -1,0 +1,50 @@
+.list-items-sub-labels {
+  display: inline-block;
+  width: 85px;
+  font-style: italic;
+}
+
+.item-list-bottom {
+  border-top: solid 1px #e5e5e5;
+}
+
+:host {
+  ::ng-deep {
+    .item-page-title-field {
+      font-size: 2rem;
+    }
+
+    ds-thumbnail {
+      > .thumbnail > img {
+        box-shadow: none !important;
+        max-height: 230px;
+      }
+
+      .thumbnail-content.outer {
+        max-height: 230px;
+      }
+
+      .thumbnail-placeholder {
+        border: unset;
+      }
+    }
+
+    ds-truncatable > div {
+      height: 100%;
+    }
+  }
+
+  .grid-item-container {
+    box-shadow: 6px 3px 20px -5px #ccc;
+    min-height: 230px;
+  }
+
+  .item-list-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .authors-list {
+    font-size: 14px;
+  }
+}

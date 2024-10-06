@@ -237,6 +237,12 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
               .then((m) => m.SubscriptionsPageRoutingModule),
             canActivate: [AuthenticatedGuard]
           },
+          {
+            path: 'datasets',
+            loadChildren: () => import('./datasets-page/datasets-page-routing.module')
+              .then((m) => m.DatasetsPageRoutingModule),
+            canActivate: [EndUserAgreementCurrentUserGuard]
+          },
           { path: '**', pathMatch: 'full', component: ThemedPageNotFoundComponent },
         ]
       }

@@ -102,7 +102,7 @@ export class MenuResolver implements Resolve<boolean> {
         model: {
           type: MenuItemType.LINK,
           text: `menu.section.browse_global_communities_and_collections`,
-          link: `/community-list`
+          link: `/communities/1876203c-50e1-4d67-b33c-3e69b1f119e4`
         } as LinkMenuItemModel
       }
     ];
@@ -137,6 +137,17 @@ export class MenuResolver implements Resolve<boolean> {
               } as TextMenuItemModel,
             }
           );
+          menuList.push({
+            id: `datasets`,
+            active: false,
+            visible: true,
+            index: 4,
+            model: {
+              type: MenuItemType.LINK,
+              text: `Datasets`,
+              link: `/datasets`
+            } as LinkMenuItemModel
+          });
         }
         menuList.forEach((menuSection) => this.menuService.addSection(MenuID.PUBLIC, Object.assign(menuSection, {
           shouldPersistOnRouteChange: true

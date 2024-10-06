@@ -1,0 +1,75 @@
+<footer class="text-lg-start">
+  <div class="top-footer">
+    <!-- Grid container -->
+    <div class=" container p-4">
+      <!--Grid row-->
+      <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-6 d-flex flex-column justify-content-around">
+          <p>
+            <img class="brand-logo" src="assets/cgiar/images/worldfish-logo-white.png"
+                 [attr.alt]="'menu.header.image.logo' | translate">
+          </p>
+          <p class="py-3">
+            <small>Follow us</small>
+          </p>
+          <ds-item-page-social-share [item]="null"
+                                     [socialIcons]="socialIcons"></ds-item-page-social-share>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 contact-info text-left">
+          <ul class="list-unstyled mb-0">
+            <li class="my-3">
+              <h4><b>WorldFish Headquarters (Malaysia)</b></h4>
+            </li>
+            <li>Jalan Batu Maung, Batu Maung,</li>
+            <li>11960 Bayan Lepas,</li>
+            <li>Penang, Malaysia</li>
+            <li class="my-3">Tel: (+60-4) 628 6888</li>
+            <li class="my-3">Fax: (+60-4) 626 5530</li>
+            <li class="my-3">Email: <a href="mailto:worldfish-mel@cgiar.org">worldfish-mel@cgiar.org</a></li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="bottom-footer p-1 d-flex justify-content-center align-items-center text-white">
+    <div class="content-container">
+      <p class="m-0">
+        <a class="text-white"
+           href="http://www.dspace.org/">{{ 'footer.link.dspace' | translate }}</a>
+        {{ 'footer.copyright' | translate:{year: dateObj | date:'y'} }}
+        <a class="text-white"
+           href="https://www.lyrasis.org/">{{ 'footer.link.lyrasis' | translate }}</a>
+      </p>
+      <ul class="footer-info list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <button class="btn btn-link text-white" type="button" (click)="showCookieSettings()">
+            {{ 'footer.link.cookies' | translate }}
+          </button>
+        </li>
+        <li *ngIf="showPrivacyPolicy">
+          <a class="btn text-white"
+             routerLink="info/privacy">{{ 'footer.link.privacy-policy' | translate }}</a>
+        </li>
+        <li *ngIf="showEndUserAgreement">
+          <a class="btn text-white"
+             routerLink="info/end-user-agreement">{{ 'footer.link.end-user-agreement' | translate }}</a>
+        </li>
+        <li *ngIf="showSendFeedback$ | async">
+          <a class="btn text-white"
+             routerLink="info/feedback">{{ 'footer.link.feedback' | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Copyright -->
+</footer>
