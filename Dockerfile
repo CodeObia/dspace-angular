@@ -4,25 +4,37 @@
 FROM node:18-alpine
 
 # Ensure Python and other build tools are available
-# These are needed to install some node modules, especially on linux/arm64
+# These are needed to install some node modules, lo
 RUN apk add --update python3 make g++ && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 ADD . /app/
-EXPOSE 4000
 
 # We run yarn install with an increased network timeout (5min) to avoid "ESOCKETTIMEDOUT" errors from hub.docker.com
 # See, for example https://github.com/yarnpkg/yarn/issues/5540
 RUN yarn install --network-timeout 300000
 
-# When running in dev mode, 4GB of memory is required to build & launch the app.
-# This default setting can be overridden as needed in your shell, via an env file or in docker-compose.
-# See Docker environment var precedence: https://docs.docker.com/compose/environment-variables/envvars-precedence/
-ENV NODE_OPTIONS="--max_old_space_size=4096"
+RUN yarn merge-i18n -s /app/src/themes/cgiar/assets/i18n
 
-# On startup, run in DEVELOPMENT mode (this defaults to live reloading enabled, etc).
-# Listen / accept connections from all IP addresses.
-# NOTE: At this time it is only possible to run Docker container in Production mode
-# if you have a public URL. See https://github.com/DSpace/dspace-angular/issues/1485
-ENV NODE_ENV development
-CMD yarn serve --host 0.0.0.0
+RUN yarn build:prod
+
+FROM docker.io/nginx:stable
+COPY --from=0 /app/dist /app/dist
+RUN mkdir -p /app/config
+
+COPY config/config.prod.yml /app/config/config.prod.yml
+COPY config/nginx-default.conf /etc/nginx/conf.d/default.conf
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV NODE_VERSION 18.17.1
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN mkdir $NVM_DIR && \
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+RUN echo "source $NVM_DIR/nvm.sh && \
+    nvm install $NODE_VERSION && \
+    nvm alias default $NODE_VERSION && \
+    nvm use default" | bash

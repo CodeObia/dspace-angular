@@ -1,0 +1,145 @@
+.statistics-parent {
+  margin: 4px 0;
+
+  .statistics-container {
+    width: 200px;
+    max-width: 45vw;
+    margin-top: -6px;
+    transition: opacity .4s ease-out;
+    cursor: pointer;
+
+    .statistics-percentage {
+      font-size: 85%;
+      margin-top: 3px;
+    }
+
+    .progress {
+      box-shadow: unset;
+      border-radius: 0;
+      height: .5rem;
+      margin: .2rem 0;
+    }
+  }
+
+  .views-container {
+    text-align: right;
+
+    .statistics-text {
+      margin-right: .3rem;
+    }
+
+    .statistics-numbers {
+      margin-right: .3rem;
+    }
+
+    .progress {
+      transform: rotate(180deg);
+
+      .progress-bar {
+        background-color: var(--brand-primary);
+      }
+    }
+  }
+
+  .downloads-container {
+    .statistics-text {
+      margin-left: .3rem;
+
+      .gdpr-compliance-popover {
+        float: right;
+        font-size: 80%;
+        width: 18px;
+        height: 18px;
+        border: 1px solid red;
+        border-radius: 50%;
+        text-align: center;
+        margin-top: 2px;
+        color: red;
+      }
+    }
+
+    .statistics-numbers {
+      margin-left: .3rem;
+      transition: font-weight .4s ease-out;
+    }
+
+    .progress {
+      .progress-bar {
+        background-color: var(--brand-secondary);
+      }
+    }
+  }
+
+  .statistics-separator {
+    width: 1px;
+    height: 4rem;
+    background-color: #eaecef;
+  }
+
+  &:hover {
+    .statistics-container:not(:hover) {
+      opacity: .5;
+    }
+
+    .statistics-container {
+      &:hover {
+        .statistics-numbers {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.statistics-table-title {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.table-wrapper {
+  max-height: 635px;
+  overflow-y: auto;
+}
+
+.views-elements {
+  color: var(--brand-primary);
+}
+
+.downloads-elements {
+  color: var(--brand-secondary);
+}
+
+.inline-statistics-container {
+  .views-elements, .downloads-elements {
+    cursor: pointer;
+  }
+}
+
+:host {
+  ::ng-deep {
+    .statistics-popover-text {
+      text-align: center
+    }
+
+    .statistics-popover-text > span {
+      font-weight: bold;
+    }
+
+    .views-elements {
+      color: var(--brand-primary);
+    }
+
+    .downloads-elements {
+      color: var(--brand-secondary);
+    }
+
+    .statistics-popover-text-views > span {
+      color: var(--brand-primary);
+    }
+
+    .statistics-popover-text-downloads > span {
+      color: var(--brand-secondary);
+    }
+  }
+}
+

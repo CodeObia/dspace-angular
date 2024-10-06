@@ -1,0 +1,26 @@
+<div class="item-page-field" *ngIf="item?.allMetadata(fields).length">
+    <div class="simple-view-element">
+        <h2 class="simple-view-element-header" *ngIf="label">{{ label | translate }}</h2>
+        <div class="simple-view-element-body">
+            <div class="d-flex flex-wrap justify-content-start gap-1">
+                <!-- Iterate over metadata values and send them to the sdgIcon template -->
+                <ng-container *ngFor="let mdValue of item?.allMetadata(fields)">
+                    <ng-container *ngTemplateOutlet="sdgIcon;
+                                                    context: {
+                                                        value: mdValue.value
+                                                    }">
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Render the UN SDG Goal icon.
+     See: https://www.un.org/sustainabledevelopment/news/communications-material/
+-->
+<ng-template #sdgIcon let-value="value">
+  <a routerLink="/search" [queryParams]="{ 'f.sdg': value + ',equals' }">
+    <img src="assets/cgiar/images/sdg-icons/E-WEB-Goal-{{ calculateSdgNumber(value) }}.webp" [alt]="value" [title]="value" class="sdg"/>
+  </a>
+</ng-template>

@@ -182,6 +182,24 @@ export function app() {
   }));
 
   /**
+   * Proxy the Stats request
+   */
+  router.use('/external-server/mel**', createProxyMiddleware({
+    target: `${environment.stats.statisticsBaseUrl}`,
+    pathRewrite: path => path.replace(environment.ui.nameSpace, '/').replace('/external-server/mel/', '/'),
+    changeOrigin: true
+  }));
+
+  /**
+   * Proxy the Stats request
+   */
+  router.use('/external-server/wfdataverse**', createProxyMiddleware({
+    target: `${environment.datasets.datasetsBaseUrl}`,
+    pathRewrite: path => path.replace(environment.ui.nameSpace, '/').replace('/external-server/wfdataverse/', '/'),
+    changeOrigin: true
+  }));
+
+  /**
    * Proxy the linksets
    */
   router.use('/signposting**', createProxyMiddleware({

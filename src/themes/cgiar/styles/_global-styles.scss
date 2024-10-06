@@ -1,0 +1,129 @@
+// Add any global css for the theme here
+
+// imports the base global style
+@import '../../../styles/_global-styles.scss';
+
+.facet-filter, .setting-option {
+  background-color: var(--bs-light);
+  border-radius: var(--bs-border-radius);
+
+  &.p-3 {
+    // Needs !important because the original bootstrap class uses it
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  // Override link color in facet filter boxes (others are overridden in the
+  // search-text-filter.component and we might need to copy that into this
+  // theme so we can override it again.
+  a {
+    color: $brand-secondary;
+  }
+
+  h4 {
+    font-size: 1.1rem
+  }
+}
+
+body {
+  // override DSpace's default line-height of 1.5
+  line-height: 1.4;
+}
+
+li.page-item.active a.page-link {
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+  color: $white;
+}
+
+// pagination links
+a.page-link {
+  color: $gray-800;
+
+  @include hover {
+    background-color: $brand-secondary;
+    border-color: $brand-secondary;
+    color: $white;
+  }
+}
+
+.list-group-item.active {
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+  color: $white;
+}
+
+a {
+  color: $brand-secondary;
+  transition: color .2s ease-out;
+
+  @include hover {
+    color: darken($brand-primary, 10%);
+  }
+}
+
+.badge-info {
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+  color: $white;
+}
+
+// Override badge colors
+.badge-primary, .badge-secondary, .badge-dark {
+  background-color: $brand-primary;
+}
+
+a.badge-primary, a.badge-secondary, a.badge-dark {
+  background-color: $brand-primary;
+
+  @include hover {
+    background-color: $brand-secondary;
+  }
+}
+
+.dropdown-item.active {
+  color: $white;
+  background-color: $brand-primary;
+}
+
+.dropdown-item:hover {
+  color: $white;
+  background-color: $brand-secondary;
+}
+
+.alert-info {
+  background-color: $white;
+  color: $brand-primary;
+  border-color: $brand-secondary;
+}
+
+// Remove Bootstrap focus effect
+.form-control:focus, .btn:focus {
+  outline: none !important;
+  box-shadow: none !important;;
+}
+
+// Override date facet link color from search-text-filter.component
+.filter-value {
+  color: $brand-primary;
+}
+
+// Add box shadow to thumbnails
+ds-thumbnail {
+  > .thumbnail {
+    > img {
+      -webkit-box-shadow: -1px 0 15px -6px #ccc;
+      -moz-box-shadow: -1px 0 15px -6px #ccc;
+      box-shadow: -1px 0 15px -6px #ccc;
+    }
+  }
+}
+
+.unicode-bidi-text * {
+  unicode-bidi: plaintext;
+}
+
+.justify-text {
+  text-align: justify;
+}
+

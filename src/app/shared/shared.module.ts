@@ -285,6 +285,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ThemedLangSwitchComponent } from './lang-switch/themed-lang-switch.component';
 import {ThemedUserMenuComponent} from './auth-nav-menu/user-menu/themed-user-menu.component';
 import { LiveRegionComponent } from './live-region/live-region.component';
+import { ItemStatisticsComponent } from './item-statistics/item-statistics.component';
+import { StatsChartsComponent } from './stats-charts/stats-charts.component';
+import { CardsComponent } from './cards/cards.component';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 const MODULES = [
   CommonModule,
@@ -300,7 +305,9 @@ const MODULES = [
   DragDropModule,
   GoogleRecaptchaModule,
   MenuModule,
-  NgxPaginationModule
+  NgxPaginationModule,
+  NgbPopoverModule,
+  HighchartsChartModule,
 ];
 
 const ROOT_MODULES = [
@@ -405,6 +412,9 @@ const COMPONENTS = [
   EpersonSearchBoxComponent,
   GroupSearchBoxComponent,
   ThemedItemPageTitleFieldComponent,
+  ItemStatisticsComponent,
+  StatsChartsComponent,
+  CardsComponent,
 ];
 
 const ENTRY_COMPONENTS = [
