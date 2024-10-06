@@ -287,6 +287,11 @@ import {ThemedUserMenuComponent} from './auth-nav-menu/user-menu/themed-user-men
 import { OrcidBadgeAndTooltipComponent } from './orcid-badge-and-tooltip/orcid-badge-and-tooltip.component';
 import { LiveRegionComponent } from './live-region/live-region.component';
 import {BtnDisabledDirective} from './btn-disabled.directive';
+import { ItemStatisticsComponent } from './item-statistics/item-statistics.component';
+import { StatsChartsComponent } from './stats-charts/stats-charts.component';
+import { CardsComponent } from './cards/cards.component';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 const MODULES = [
   CommonModule,
@@ -302,7 +307,9 @@ const MODULES = [
   DragDropModule,
   GoogleRecaptchaModule,
   MenuModule,
-  NgxPaginationModule
+  NgxPaginationModule,
+  NgbPopoverModule,
+  HighchartsChartModule,
 ];
 
 const ROOT_MODULES = [
@@ -408,6 +415,9 @@ const COMPONENTS = [
   GroupSearchBoxComponent,
   ThemedItemPageTitleFieldComponent,
   OrcidBadgeAndTooltipComponent,
+  ItemStatisticsComponent,
+  StatsChartsComponent,
+  CardsComponent,
 ];
 
 const ENTRY_COMPONENTS = [

@@ -1,0 +1,12 @@
+<div class="item-page-field" *ngIf="item?.allMetadata(fields).length">
+    <div class="simple-view-element">
+        <h2 class="simple-view-element-header" *ngIf="label">{{ label | translate }}</h2>
+        <div class="simple-view-element-body">
+            <div class="d-flex flex-wrap justify-content-start gap-2 partners-list">
+                <ng-container *ngFor="let logo of partnersLogos">
+                    <img [src]="logo">
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,6 +25,9 @@ import { DiscoverySortConfig } from './discovery-sort.config';
 import { LiveRegionConfig } from '../app/shared/live-region/live-region.config';
 import { SearchConfig } from './search-page-config.interface';
 import { AccessibilitySettingsConfig } from '../app/accessibility/accessibility-settings.config';
+import { StatsServerConfig } from './stats-server.config';
+import { FileDownloadConfig } from './file-download.config';
+import { DatasetsConfig } from './datasets.config';
 
 interface AppConfig extends Config {
   ui: UIServerConfig;
@@ -54,6 +57,9 @@ interface AppConfig extends Config {
   liveRegion: LiveRegionConfig;
   search: SearchConfig
   accessibility: AccessibilitySettingsConfig;
+  stats?: StatsServerConfig;
+  fileDownload?: FileDownloadConfig;
+  datasets?: DatasetsConfig;
 }
 
 /**

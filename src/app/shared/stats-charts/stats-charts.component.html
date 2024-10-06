@@ -1,0 +1,15 @@
+<div class="chart-wrapper">
+  <div class="text-center" *ngIf="chartLoading | async">
+    <ds-themed-loading></ds-themed-loading>
+  </div>
+  <highcharts-chart
+    [class.hide]="(chartLoading | async) || !chartOptions?.series"
+    #chart
+    *ngIf="chartOptions?.series && isHighcharts"
+    [Highcharts]="highcharts"
+    [options]="chartOptions"
+    [update]="updateFlag"
+    [callbackFunction]="chartCallback"
+    [constructorType]="isMap ? 'mapChart' : 'chart'"
+  ></highcharts-chart>
+</div>

@@ -1,0 +1,26 @@
+.social-kit-container {
+  .social-kit-link {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 2px;
+
+    &:hover {
+      text-decoration: unset;
+    }
+
+    .social-kit-icon {
+      transition: color .2s ease-out;
+
+      &:hover {
+        color: var(--brand-primary);
+      }
+    }
+
+    .social-kit-icon.x-large {
+      font-size: x-large;
+    }
+  }
+}
+

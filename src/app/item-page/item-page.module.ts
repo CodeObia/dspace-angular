@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -16,6 +16,20 @@ import {
   ItemPageAbstractFieldComponent
 } from './simple/field-components/specific-field/abstract/item-page-abstract-field.component';
 import { ItemPageUriFieldComponent } from './simple/field-components/specific-field/uri/item-page-uri-field.component';
+import { ItemPageOrcidFieldComponent } from './simple/field-components/specific-field/orcid/item-page-orcid-field.component';
+import { ItemPageMetadataSearchLinkFieldComponent } from './simple/field-components/specific-field/metadata-search-link/item-page-metadata-search-link-field.component';
+import { ItemPageAltmetricFieldComponent } from './simple/field-components/specific-field/altmetric/item-page-altmetric-field.component';
+import { ItemPageDimensionsFieldComponent } from './simple/field-components/specific-field/dimensions/item-page-dimensions-field.component';
+import { ItemPageAgrovocFieldComponent } from './simple/field-components/specific-field/agrovoc/item-page-agrovoc-field.component';
+import { ItemPageStatisticsFieldComponent } from './simple/field-components/specific-field/statistics/item-page-statistics-field.component';
+import { ItemPageSdgFieldComponent } from './simple/field-components/specific-field/sdg/item-page-sdg-field.component';
+import { ItemPagePartnersLogosFieldComponent } from './simple/field-components/specific-field/partners-logos/item-page-partners-logos-field.component';
+import { ItemPageSocialShareComponent } from './simple/field-components/specific-field/social-share/item-page-social-share.component';
+import { ItemPageOtherUriFieldComponent } from './simple/field-components/specific-field/other-uri/item-page-other-uri-field.component';
+import { ItemPageLicenseFieldComponent } from './simple/field-components/specific-field/license/item-page-license-field.component';
+import { ItemPageMapComponent } from './simple/field-components/specific-field/map/item-page-map.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { ItemPageFieldComponent } from './simple/field-components/specific-field/item-page-field.component';
 import { CollectionsComponent } from './field-components/collections/collections.component';
 import { FullItemPageComponent } from './full/full-item-page.component';
@@ -79,6 +93,18 @@ const DECLARATIONS = [
   ItemPageDateFieldComponent,
   ItemPageAbstractFieldComponent,
   ItemPageUriFieldComponent,
+  ItemPageOrcidFieldComponent,
+  ItemPageMetadataSearchLinkFieldComponent,
+  ItemPageAltmetricFieldComponent,
+  ItemPageDimensionsFieldComponent,
+  ItemPageAgrovocFieldComponent,
+  ItemPageStatisticsFieldComponent,
+  ItemPageSdgFieldComponent,
+  ItemPagePartnersLogosFieldComponent,
+  ItemPageSocialShareComponent,
+  ItemPageOtherUriFieldComponent,
+  ItemPageLicenseFieldComponent,
+  ItemPageMapComponent,
   ItemPageFieldComponent,
   CollectionsComponent,
   FullFileSectionComponent,
@@ -121,6 +147,9 @@ const DECLARATIONS = [
     ResultsBackButtonModule,
     UploadModule,
     DsoPageModule,
+    NgOptimizedImage,
+    ClipboardModule,
+    NgbPopoverModule,
   ],
   declarations: [
     ...DECLARATIONS,

@@ -25,6 +25,7 @@ export class ThumbnailComponent implements OnChanges {
    * The thumbnail Bitstream
    */
   @Input() thumbnail: Bitstream | RemoteData<Bitstream>;
+  @Input() externalThumbnail: string;
 
   /**
    * The default image, used if the thumbnail isn't set or can't be downloaded.
@@ -75,7 +76,11 @@ export class ThumbnailComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (isPlatformBrowser(this.platformID)) {
       if (hasNoValue(this.thumbnail)) {
-        this.setSrc(this.defaultImage);
+        if (hasValue(this.externalThumbnail)) {
+          this.setSrc(this.externalThumbnail);
+        } else {
+          this.setSrc(this.defaultImage);
+        }
         return;
       }
 
@@ -117,6 +122,12 @@ export class ThumbnailComponent implements OnChanges {
     const src = this.src$.getValue();
     const thumbnail = this.bitstream;
     const thumbnailSrc = thumbnail?._links?.content?.href;
+
+    if (src === this.externalThumbnail) {
+      this.externalThumbnail = null;
+      this.setSrc(null);
+      return;
+    }
 
     if (!this.retriedWithToken && hasValue(thumbnailSrc) && src === thumbnailSrc) {
       // the thumbnail may have failed to load because it's restricted
@@ -178,9 +189,15 @@ export class ThumbnailComponent implements OnChanges {
       if (src !== null && this.isLoading$.getValue() === false) {
         this.isLoading$.next(true);
       }
-      this.src$.next(src);
-      if (src === null && this.isLoading$.getValue() === true) {
-        this.isLoading$.next(false);
+
+      if (src === null && hasValue(this.externalThumbnail)) {
+        this.src$.next(this.externalThumbnail);
+      } else {
+        this.src$.next(src);
+
+        if (src === null && this.isLoading$.getValue() === true) {
+          this.isLoading$.next(false);
+        }
       }
     }
   }
