@@ -1,0 +1,67 @@
+<div class="text-center" *ngIf="isLoading">
+  <ds-themed-loading></ds-themed-loading>
+</div>
+
+<ng-container *ngIf="cardsData && !isLoading">
+  <h3 *ngIf="cardHeader" class="counters-card-header">{{ cardHeader | translate }}</h3>
+  <div class="counters-container"
+       [class.per-row-1]="cardsPerRow === 1"
+       [class.per-row-2]="cardsPerRow === 2"
+       [class.per-row-3]="cardsPerRow === 3"
+       [class.per-row-4]="cardsPerRow === 4"
+       [class.per-row-5]="cardsPerRow === 5"
+       [class.counter-large-image]="isLargeImage">
+    <ng-container [ngTemplateOutlet]="card"
+                  [ngTemplateOutletContext]="{cards: cardsData}">
+    </ng-container>
+  </div>
+
+  <ds-stats-charts *ngIf="chartsEnabled" [data]="chartData" [chartLoading]="chartLoading"></ds-stats-charts>
+</ng-container>
+
+<ng-template #card let-cards="cards">
+  <div *ngFor="let cardData of cards" class="counter-parent">
+    <div *ngIf="cardData.settings.queryParams != null"
+         class="card card-filtering"
+         [routerLink]="cardData.settings.routerLink"
+         [queryParams]="cardData.settings.queryParams">
+      <ng-container [ngTemplateOutlet]="cardBody"
+                    [ngTemplateOutletContext]="{cardData: cardData}">
+      </ng-container>
+    </div>
+    <div *ngIf="cardData.settings.chart != null"
+         class="card card-charts" [class.active-chart]="activeChart === cardData.settings.chart.field"
+         (click)="renderChart(cardData.settings)">
+      <ng-container [ngTemplateOutlet]="cardBody"
+                    [ngTemplateOutletContext]="{cardData: cardData}">
+      </ng-container>
+    </div>
+    <div *ngIf="cardData.settings.queryParams == null && cardData.settings.chart == null" class="card">
+      <ng-container [ngTemplateOutlet]="cardBody"
+                    [ngTemplateOutletContext]="{cardData: cardData}">
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #cardBody let-cardData="cardData">
+  <div class="card-body">
+    <i *ngIf="cardData.settings.icon" class="card-icon {{ cardData.settings.icon }}"></i>
+    <i *ngIf="!cardData.settings.icon && cardData.settings.image" class="card-icon">
+      <img [src]="cardData.settings.image">
+    </i>
+    <h5 class="card-title">
+      <div class="card-text">{{ cardData.settings.title | translate }}</div>
+      <strong>
+        {{ cardData.value | number }}
+        <ng-container *ngIf="cardData.settings.show_percentage">
+          <small class="small-text">
+            / {{ cardData.value / cardData.total * 100 | number: '1.1-2' }} %
+          </small>
+        </ng-container>
+      </strong>
+    </h5>
+    <i *ngIf="cardData.settings.queryParams != null" class="fa-solid fa-filter card-icon-function"></i>
+    <i *ngIf="cardData.settings.chart != null" class="fa-solid fa-chart-line card-icon-function"></i>
+  </div>
+</ng-template>

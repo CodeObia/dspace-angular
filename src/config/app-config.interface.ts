@@ -23,6 +23,9 @@ import { MarkdownConfig } from './markdown-config.interface';
 import { FilterVocabularyConfig } from './filter-vocabulary-config';
 import { DiscoverySortConfig } from './discovery-sort.config';
 import { LiveRegionConfig } from '../app/shared/live-region/live-region.config';
+import { StatsServerConfig } from './stats-server.config';
+import { FileDownloadConfig } from './file-download.config';
+import { DatasetsConfig } from './datasets.config';
 
 interface AppConfig extends Config {
   ui: UIServerConfig;
@@ -50,6 +53,9 @@ interface AppConfig extends Config {
   vocabularies: FilterVocabularyConfig[];
   comcolSelectionSort: DiscoverySortConfig;
   liveRegion: LiveRegionConfig;
+  stats?: StatsServerConfig;
+  fileDownload?: FileDownloadConfig;
+  datasets?: DatasetsConfig;
 }
 
 /**

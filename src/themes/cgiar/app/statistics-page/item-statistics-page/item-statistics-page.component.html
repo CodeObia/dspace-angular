@@ -1,0 +1,16 @@
+<div class="container">
+  <ng-container *ngVar="(scope$ | async) as scope">
+    <h1 *ngIf="scope"
+        class="header statistics-page-title"
+        id="{{ scope.id }}">
+      {{ 'statistics.header' | translate: {scope: getName(scope)} }}
+    </h1>
+  </ng-container>
+
+  <ds-item-statistics [itemId]="(scope$ | async).uuid"
+                      [dspaceObjectType]="(scope$ | async).type"
+                      [labelViews]="'item.page.statistics.views'"
+                      [labelDownloads]="'item.page.statistics.downloads'"
+                      [renderAggregations]="true">
+  </ds-item-statistics>
+</div>

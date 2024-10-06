@@ -1,0 +1,146 @@
+:host {
+  .counters-card-header {
+    color: var(--brand-primary);
+  }
+
+  .counters-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 1.5rem;
+
+    .counter-parent {
+      flex: 1;
+      min-width: 210px;
+
+      .card {
+        border: unset;
+        border-bottom: 1px solid var(--brand-primary);
+        border-radius: 0;
+
+        .card-body {
+          height: 60px;
+          box-shadow: unset;
+          width: unset !important;
+          border-radius: 0 !important;
+          padding: 5px 0 5px 0;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          display: flex;
+
+          .card-title {
+            text-align: left;
+            color: #666666;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 5px 0 5px 0;
+
+            > .card-text {
+              font-size: 80%;
+            }
+
+            > strong {
+              font-size: 20px;
+
+              .small-text {
+                font-weight: normal !important;
+                font-size: 10px !important;
+              }
+            }
+          }
+
+          .card-icon {
+            color: var(--brand-primary);
+            padding-right: 10px;
+            font-size: 35px !important;
+
+            img {
+              max-height: 35px;
+              width: 100%;
+            }
+          }
+
+          .card-icon-function {
+            color: var(--brand-primary);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .card:hover, .card.active-chart {
+        .card-icon-function {
+          opacity: 1 !important;
+        }
+      }
+
+      .card.card-filtering, .card.card-charts {
+        cursor: pointer;
+      }
+
+      .card:after {
+        transition: background-color 0.25s ease-in;
+        position: absolute;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: inherit;
+        content: "";
+        pointer-events: none;
+        opacity: 0.2;
+      }
+
+      .card:hover:after, .card.active-chart:after {
+        background-color: var(--brand-primary);
+      }
+    }
+  }
+
+  .counters-container.counter-large-image {
+    .counter-parent {
+      .card {
+        .card-body {
+          height: 65px;
+
+          .card-icon {
+            img {
+              height: 45px;
+              max-height: unset;
+              width: 45px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .counters-container.per-row-1 .counter-parent {
+    min-width: 100%;
+  }
+
+  .counters-container.per-row-2 .counter-parent {
+    min-width: 48%;
+  }
+
+  .counters-container.per-row-3 .counter-parent {
+    min-width: 350px;
+  }
+
+  .counters-container.per-row-4 .counter-parent {
+    min-width: 210px;
+  }
+
+  .counters-container.per-row-5 .counter-parent {
+    min-width: 170px;
+  }
+}

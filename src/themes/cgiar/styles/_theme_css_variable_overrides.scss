@@ -1,0 +1,48 @@
+// Override or add CSS variables for your theme here
+
+:root {
+
+  @include media-breakpoint-up(md) {
+    --ds-header-logo-height: 40px;
+    --ds-header-height: 80px;
+  }
+  @include media-breakpoint-down(sm) {
+    --ds-header-logo-height: 50px;
+    --ds-header-height: 90px;
+  }
+
+  --ds-header-navbar-border-bottom-height: 5px;
+
+  /* set the next two properties as `--ds-header-navbar-border-bottom-*`
+  in order to keep the bottom border of the header when navbar is expanded */
+  --ds-expandable-navbar-border-top-color: #{$white};
+  --ds-expandable-navbar-border-top-height: 0;
+  --ds-expandable-navbar-padding-top: 0;
+
+  --ds-header-logo-height: 40px;
+  --ds-banner-text-background: $white;
+  --ds-banner-background-gradient-width: 300px;
+  --ds-home-news-link-color: #{$brand-primary};
+  --ds-home-news-link-hover-color: var(--brand-primary-darker);
+  --ds-thumbnail-max-width: 100%;
+  // override DSpace navbar link colors (note the special variable syntax here)
+  --ds-navbar-link-color-hover: #{$brand-secondary};
+  --ds-header-navbar-border-top-color: #{$brand-primary};
+  --ds-header-navbar-border-bottom-color: #{$brand-primary};
+  // override DSpace search, language, and login colors
+  --ds-header-icon-color: #{$brand-primary};
+  --ds-header-icon-color-hover: #{$brand-secondary};
+  // override DSpace footer background color
+  --ds-footer-bg: #{$brand-primary};
+  // override DSpace header trail text color
+  --ds-breadcrumb-link-color: #{$brand-primary};
+  --ds-breadcrumb-link-active-color: #{$gray-800};
+  --brand-primary: #{$brand-primary};
+  --brand-primary-darker: #{darken($brand-primary, 10%)};
+  --brand-secondary: #{$brand-secondary};
+
+  --ds-comcol-logo-max-width: 100px;
+  --ds-comcol-logo-max-height: 100px;
+
+  --ds-top-footer-bg: #{$brand-secondary};
+}

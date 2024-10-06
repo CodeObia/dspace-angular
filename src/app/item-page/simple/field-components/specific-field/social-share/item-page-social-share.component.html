@@ -1,0 +1,15 @@
+<div class="social-kit-container d-flex flex-row justify-content-center gap-2">
+  <ng-container *ngFor="let icon of icons">
+    <a *ngIf="icon.type !== 'link'" class="social-kit-link d-flex justify-content-center align-items-center"
+       [ngbTooltip]="icon.tooltip"
+       target="_blank" [href]="icon.link">
+      <i [class]="icon.iconClass + ' social-kit-icon'"></i>
+    </a>
+    <a *ngIf="icon.type === 'link'" class="social-kit-link d-flex justify-content-center align-items-center"
+       [ngbTooltip]="icon.tooltip"
+       [cdkCopyToClipboard]="icon.link">
+      <i [class]="icon.iconClass + ' social-kit-icon'"></i>
+    </a>
+  </ng-container>
+</div>
+
