@@ -1,0 +1,58 @@
+@import './../../../../../../../styles/variables.scss';
+
+.standalone-metadata-value {
+  font-size: 1.25rem;
+
+  .icon {
+    color: var(--brand-primary);
+  }
+}
+
+.flex-column {
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+:host {
+  ::ng-deep {
+    .item-page-title-field {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1rem !important;
+      font-weight: bold;
+    }
+
+    .simple-view-element-header {
+      text-transform: uppercase;
+      color: var(--brand-secondary);
+      position: relative;
+    }
+
+    .right-side {
+      .simple-view-element-header {
+        border-bottom: solid 1px var(--brand-primary);
+        padding-bottom: .5rem;
+        margin-bottom: 1rem;
+      }
+
+      .simple-view-element-header:after {
+        content: "\25BE";
+        color: var(--brand-primary);
+        position: absolute;
+        left: .5rem;
+        bottom: -.75rem;
+      }
+    }
+  }
+}
+
+.corresponding_author {
+  cursor: pointer;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}

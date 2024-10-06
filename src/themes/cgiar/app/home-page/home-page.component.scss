@@ -1,0 +1,36 @@
+:host {
+  .research-info-container {
+    width: 100%;
+    background-color: var(--brand-secondary);
+    color: white;
+    position: relative;
+
+    &:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.02;
+      background-image: url(/assets/cgiar/images/network.png);
+      background-repeat: repeat-y;
+      background-position: 50% 0;
+      background-size: cover;
+    }
+
+    a {
+      color: white;
+      cursor: pointer;
+
+      img {
+        height: 80px;
+        border-radius: 50%;
+        box-shadow: 0 0 27px -10px #ccc;
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,109 @@
+<ds-themed-home-news></ds-themed-home-news>
+<div class="container mt-5">
+  <ng-container *ngIf="(site$ | async) as site">
+    <ds-view-tracker [object]="site"></ds-view-tracker>
+  </ng-container>
+
+  <ds-cards *ngIf="topPageCardsSettings"
+            [cardsSettings]="topPageCardsSettings"
+            [cardHeader]="''"
+            [cardsPerRow]="5"
+            [isLargeImage]="false"
+            [chartsEnabled]="false"
+            [collectionsCards]="false">
+  </ds-cards>
+
+  <ds-cards *ngIf="impactAreasCardsSettings"
+            [cardsSettings]="impactAreasCardsSettings"
+            [cardHeader]="'search.filters.filter.impact_area.head'"
+            [cardsPerRow]="5"
+            [isLargeImage]="true"
+            [chartsEnabled]="false"
+            [collectionsCards]="false">
+  </ds-cards>
+
+  <ds-cards [cardsSettings]="[]"
+            [cardHeader]="'Focus Areas'"
+            [cardsPerRow]="5"
+            [isLargeImage]="true"
+            [chartsEnabled]="false"
+            [collectionsCards]="true">
+  </ds-cards>
+
+  <!--  <ds-themed-top-level-community-list></ds-themed-top-level-community-list>-->
+
+  <ds-recent-item-list *ngIf="recentSubmissionspageSize>0"></ds-recent-item-list>
+</div>
+
+<div class="research-info-container">
+  <div class="container mt-5 py-5">
+    <h3 class="display-4 mb-5">Research related info</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.altmetric.com" class="d-flex text-right">
+          <div>
+            <h1>Altmetric</h1>
+            <p>
+              Metrics for assessing other measures of use and influence, such as
+              number of times publication is read, downloaded, saved, mentioned or cited in popular online sources.
+            </p>
+          </div>
+          <div class="mx-5 d-flex justify-content-center align-items-start">
+            <img src="assets/cgiar/images/Altmetric_logo.png">
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a target="_blank" rel="noopener noreferrer" href="https://orcid.org" class="d-flex">
+          <div class="mx-5 d-flex justify-content-center align-items-start">
+            <img src="assets/cgiar/images/ORCID_Logo.png">
+          </div>
+          <div>
+            <h1>ORCID</h1>
+            <p>
+              Provides a persistent digital identifier (an ORCID ID) that you own and
+              control. Connect this ID with professional information – grants, publications, peer review, etc.
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a target="_blank" rel="noopener noreferrer" href="https://agrovoc.fao.org/browse/agrovoc/en"
+           class="d-flex text-right">
+          <div>
+            <h1>AGROVOC</h1>
+            <p>
+              AGROVOC is a multilingual controlled vocabulary covering areas of interest
+              of the Food and Agriculture Organization of the United Nations, aiming to promote the visibility of
+              research
+              produced among FAO members.
+            </p>
+          </div>
+          <div class="mx-5 d-flex justify-content-center align-items-start">
+            <img src="assets/cgiar/images/AGROVOC-logo.gif">
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="mb-4">
+    <ds-item-statistics [itemId]="null"
+                        [dspaceObjectType]="'repository'"
+                        [labelViews]="'item.page.statistics.views'"
+                        [labelDownloads]="'item.page.statistics.downloads'"
+                        [renderAggregations]="false">
+    </ds-item-statistics>
+  </div>
+
+  <ds-cards *ngIf="chartsCardsSettings"
+            [cardsSettings]="chartsCardsSettings"
+            [cardHeader]="''"
+            [cardsPerRow]="5"
+            [isLargeImage]="false"
+            [chartsEnabled]="true"
+            [collectionsCards]="false">
+  </ds-cards>
+</div>
