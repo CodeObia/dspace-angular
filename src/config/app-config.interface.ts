@@ -33,6 +33,9 @@ import { SubmissionConfig } from './submission-config.interface';
 import { SuggestionConfig } from './suggestion-config.interfaces';
 import { ThemeConfig } from './theme.config';
 import { UIServerConfig } from './ui-server-config.interface';
+import { StatsServerConfig } from './stats-server.config';
+import { FileDownloadConfig } from './file-download.config';
+import { DatasetsConfig } from './datasets.config';
 
 
 interface AppConfig extends Config {
@@ -66,6 +69,9 @@ interface AppConfig extends Config {
   search: SearchConfig;
   notifyMetrics: AdminNotifyMetricsRow[];
   liveRegion: LiveRegionConfig;
+  stats?: StatsServerConfig;
+  fileDownload?: FileDownloadConfig;
+  datasets?: DatasetsConfig;
 }
 
 /**

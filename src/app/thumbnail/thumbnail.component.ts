@@ -48,6 +48,7 @@ export class ThumbnailComponent implements OnChanges {
    * The thumbnail Bitstream
    */
   @Input() thumbnail: Bitstream | RemoteData<Bitstream>;
+  @Input() externalThumbnail: string;
 
   /**
    * The default image, used if the thumbnail isn't set or can't be downloaded.
@@ -98,7 +99,11 @@ export class ThumbnailComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (isPlatformBrowser(this.platformID)) {
       if (hasNoValue(this.thumbnail)) {
-        this.setSrc(this.defaultImage);
+        if (hasValue(this.externalThumbnail)) {
+          this.setSrc(this.externalThumbnail);
+        } else {
+          this.setSrc(this.defaultImage);
+        }
         return;
       }
 
@@ -140,6 +145,12 @@ export class ThumbnailComponent implements OnChanges {
     const src = this.src$.getValue();
     const thumbnail = this.bitstream;
     const thumbnailSrc = thumbnail?._links?.content?.href;
+
+    if (src === this.externalThumbnail) {
+      this.externalThumbnail = null;
+      this.setSrc(null);
+      return;
+    }
 
     if (!this.retriedWithToken && hasValue(thumbnailSrc) && src === thumbnailSrc) {
       // the thumbnail may have failed to load because it's restricted
@@ -189,6 +200,9 @@ export class ThumbnailComponent implements OnChanges {
    * @param src
    */
   setSrc(src: string): void {
+    if (src === null && hasValue(this.externalThumbnail)) {
+      src = this.externalThumbnail;
+    }
     // only update the src if it has changed (the parent component may fire the same one multiple times
     if (this.src$.getValue() !== src) {
       // every time the src changes we need to start the loading animation again, as it's possible

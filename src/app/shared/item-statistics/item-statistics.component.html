@@ -1,0 +1,185 @@
+<ng-container *ngIf="widget">
+<div class="d-flex flex-wrap justify-content-center">
+  <div class="d-flex align-items-center statistics-parent">
+    <div class="statistics-container views-container views-elements"
+         [ngbPopover]="ViewsCountryDetailsPopoverContent"
+         [popoverTitle]="(labelViews | translate) + ' in the past 6 months'"
+         triggers="hover">
+      <div class="statistics-text">{{ labelViews | translate }}</div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+             [style.width.%]="statisticsTotal.views.percentage">
+        </div>
+      </div>
+      <span class="d-flex justify-content-between statistics-numbers">
+      <span class="statistics-percentage">
+        {{ statisticsTotal.views.percentage | number: '1.0-0' }}%
+      </span>
+        {{ statisticsTotal.views.value | dsShortNumber }}
+    </span>
+    </div>
+    <div class="statistics-separator"></div>
+    <div class="statistics-container downloads-container downloads-elements"
+         [ngbPopover]="DownloadsCountryDetailsPopoverContent"
+         [popoverTitle]="(labelDownloads | translate) + ' in the past 6 months'"
+         triggers="hover">
+      <div class="statistics-text">
+        {{ labelDownloads | translate }}
+        <span class="gdpr-compliance-popover" [ngbTooltip]="GDPRCountsPopoverContent" triggers="click">
+          <i class="fa-solid fa-exclamation"></i>
+        </span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+             [style.width.%]="statisticsTotal.downloads.percentage">
+        </div>
+      </div>
+      <span class="d-flex justify-content-between statistics-numbers">
+      {{ statisticsTotal.downloads.value | dsShortNumber }}
+        <span class="statistics-percentage">
+        {{ statisticsTotal.downloads.percentage | number: '1.0-0' }}%
+      </span>
+    </span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="renderAggregations" class="row">
+  <div class="text-center" *ngIf="(loadingCount | async) !== 0">
+    <ds-themed-loading></ds-themed-loading>
+  </div>
+
+  <ng-container *ngIf="(loadingCount | async) === 0">
+    <div class="col-xs-12 col-md-4">
+      <h2 class="statistics-table-title text-center"> Statistics per country </h2>
+      <div class="table-wrapper">
+        <table class="table table-hover" *ngIf="aggregations.country.length > 0">
+          <thead>
+          <tr>
+            <th>Country</th>
+            <th class="views-elements">{{ 'item.page.statistics.views' | translate }}</th>
+            <th class="downloads-elements">{{ 'item.page.statistics.downloads' | translate }}</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let country of aggregations.country">
+            <td>{{ country.label }}</td>
+            <td class="views-elements">{{ country.views }}</td>
+            <td class="downloads-elements">{{ country.downloads }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <h2 class="statistics-table-title text-center"> Statistics per city </h2>
+      <div class="table-wrapper">
+        <table class="table table-hover" *ngIf="aggregations.city.length > 0">
+          <thead>
+          <tr>
+            <th>City</th>
+            <th class="views-elements">{{ 'item.page.statistics.views' | translate }}</th>
+            <th class="downloads-elements">{{ 'item.page.statistics.downloads' | translate }}</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let city of aggregations.city">
+            <td>{{ city.label }}</td>
+            <td class="views-elements">{{ city.views }}</td>
+            <td class="downloads-elements">{{ city.downloads }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <h2 class="statistics-table-title text-center"> Statistics last 12 months </h2>
+      <div class="table-wrapper">
+        <table class="table table-hover" *ngIf="aggregations.month.length > 0">
+          <thead>
+          <tr>
+            <th>Month</th>
+            <th class="views-elements">{{ 'item.page.statistics.views' | translate }}</th>
+            <th class="downloads-elements">{{ 'item.page.statistics.downloads' | translate }}</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let month of aggregations.month">
+            <td>{{ month.label }}</td>
+            <td class="views-elements">{{ month.views }}</td>
+            <td class="downloads-elements">{{ month.downloads }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+</div>
+</ng-container>
+
+<ng-container *ngIf="!widget">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-5 inline-statistics-container">
+    <div *ngIf="statisticsTotal.views.value > 0" class="views-elements"
+         [ngbPopover]="ViewsCountryDetailsPopoverContent"
+         [popoverTitle]="(labelViews | translate) + ' in the past 6 months'"
+         triggers="hover">
+      <i class="fa fa-eye"></i> {{ statisticsTotal.views.value | dsShortNumber }}
+    </div>
+    <div *ngIf="statisticsTotal.downloads.value > 0" class="downloads-elements"
+         [ngbPopover]="DownloadsCountryDetailsPopoverContent"
+         [popoverTitle]="(labelDownloads | translate) + ' in the past 6 months'"
+         triggers="hover">
+      <i class="fa fa-download"></i> {{ statisticsTotal.downloads.value | dsShortNumber }}
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #ViewsCountryDetailsPopoverContent>
+  <div class="statistics-popover-text statistics-popover-text-views">
+    Total: <span class="views-elements">{{ statisticsTotal.views.popover.value | dsShortNumber }}</span>
+    <div class="mb-1 mt-1" *ngIf="statisticsTotal.views.popover.countries.length > 0">
+      Top 5 countries:
+    </div>
+  </div>
+  <table class="table table-hover" *ngIf="statisticsTotal.views.popover.countries.length > 0">
+    <thead>
+    <tr>
+      <th>Country</th>
+      <th class="views-elements">{{ labelViews | translate }}</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let country of statisticsTotal.views.popover.countries">
+      <td>{{ country.country }}</td>
+      <td class="views-elements">{{ country.value | dsShortNumber }}</td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #DownloadsCountryDetailsPopoverContent>
+  <div class="statistics-popover-text statistics-popover-text-downloads">
+    Total: <span class="downloads-elements">{{ statisticsTotal.downloads.popover.value | dsShortNumber }}</span>
+    <div class="mb-1 mt-1" *ngIf="statisticsTotal.downloads.popover.countries.length > 0">
+      Top 5 countries:
+    </div>
+  </div>
+  <table class="table table-hover" *ngIf="statisticsTotal.downloads.popover.countries.length > 0">
+    <thead>
+    <tr>
+      <th>Country</th>
+      <th class="downloads-elements">{{ labelDownloads | translate }}</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let country of statisticsTotal.downloads.popover.countries">
+      <td>{{ country.country }}</td>
+      <td class="downloads-elements">{{ country.value | dsShortNumber }}</td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #GDPRCountsPopoverContent>
+  Dear Visitor, this site complies with the European Union General Data Protection Regulation
+  <a href="https://gdpr.eu" target="_blank">(GDPR)</a> and all Internet Protocol (IP) addresses collected with
+  the purpose to generate the information charts (analytics) are anonymized and we cannot identify the user
+  individually.
+  <br>Country label <b>Global</b> refers to IP addresses not matched with any country.
+</ng-template>
+

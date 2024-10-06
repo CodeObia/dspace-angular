@@ -18,6 +18,7 @@ import { ThumbnailComponent } from './thumbnail.component';
 export class ThemedThumbnailComponent extends ThemedComponent<ThumbnailComponent> {
 
   @Input() thumbnail: Bitstream | RemoteData<Bitstream>;
+  @Input() externalThumbnail: string;
 
   @Input() defaultImage?: string | null;
 
@@ -29,6 +30,7 @@ export class ThemedThumbnailComponent extends ThemedComponent<ThumbnailComponent
 
   protected inAndOutputNames: (keyof ThumbnailComponent & keyof this)[] = [
     'thumbnail',
+    'externalThumbnail',
     'defaultImage',
     'alt',
     'placeholder',
