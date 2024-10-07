@@ -1,0 +1,70 @@
+<div class="row">
+  <div *ngIf="showThumbnails" class="col-2 col-md-2">
+    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+       [routerLink]="[itemPageRoute]" class="dont-break-out">
+      <ds-thumbnail [externalThumbnail]="dso.firstMetadataValue('mel.file.thumbnail')" [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
+      </ds-thumbnail>
+    </a>
+    <span *ngIf="linkType == linkTypes.None" class="dont-break-out">
+    <ds-thumbnail [externalThumbnail]="dso.firstMetadataValue('mel.file.thumbnail')" [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
+    </ds-thumbnail>
+    </span>
+  </div>
+  <div [ngClass]="showThumbnails ? 'col-10' : 'col-md-12'">
+    <ds-truncatable [id]="dso.id" *ngIf="object !== undefined && object !== null">
+      <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+         [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
+         [innerHTML]="dsoTitle"></a>
+      <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
+            [innerHTML]="dsoTitle"></span>
+      <div class="text-muted">
+        <ds-truncatable-part [id]="dso.id" [minLines]="3">
+          <span *ngIf="dso.allMetadata(['dc.creator', 'dc.contributor']).length > 0" class="item-list-authors">
+            <span class="list-items-sub-labels">
+              {{ 'list.items.page.authors' | translate }}:
+            </span>
+            <span *ngFor="let author of allMetadataValues(['dc.creator', 'dc.contributor']); let last=last;">
+              <a routerLink="/search" [queryParams]="generateSearchParams(author, 'author')">
+                <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
+              </a>
+              <span *ngIf="!last">; </span>
+            </span>
+          </span>
+          <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dcterms.issued')">
+            (<span *ngIf="dso.firstMetadataValue('dc.publisher')" class="item-list-publisher"
+                   [innerHTML]="firstMetadataValue('dc.publisher')"></span>
+            <span *ngIf="dso.firstMetadataValue('dc.publisher') && dso.firstMetadataValue('dcterms.issued')">, </span>
+            <span *ngIf="dso.firstMetadataValue('dcterms.issued')" class="item-list-date"
+                  [innerHTML]="firstMetadataValue('dcterms.issued')"></span>)
+          </ng-container>
+        </ds-truncatable-part>
+      </div>
+      <div *ngIf="dso.firstMetadataValue('dcterms.available')" class="text-muted">
+        <span class="list-items-sub-labels">
+          {{ 'list.items.page.date' | translate }}:
+        </span>
+        <span class="item-list-date" [innerHTML]="firstMetadataValue('dcterms.available')"></span>
+      </div>
+      <div *ngIf="dso.firstMetadataValue('dc.type')" class="text-muted">
+        <span class="list-items-sub-labels">
+          {{ 'list.items.page.type' | translate }}:
+        </span>
+        <a routerLink="/search" [queryParams]="generateSearchParams(firstMetadataValue('dc.type'), 'itemtype')">
+          <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.type')"></span>
+        </a>
+      </div>
+      <div *ngIf="dso.firstMetadataValue('dc.identifier.status')" class="text-muted">
+        <span class="list-items-sub-labels">
+          {{ 'list.items.page.status' | translate }}:
+        </span>
+        <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.identifier.status')"></span>
+      </div>
+      <div *ngIf="dso.firstMetadataValue('dc.description.abstract')"
+           class="item-list-abstract unicode-bidi-text justify-text">
+        <ds-truncatable-part [id]="dso.id" [minLines]="3">
+          <span [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>
+        </ds-truncatable-part>
+      </div>
+    </ds-truncatable>
+  </div>
+</div>
