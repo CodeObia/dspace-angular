@@ -5,14 +5,21 @@
     margin-top: var(--ds-wrapper-grid-spacing);
     margin-bottom: var(--ds-wrapper-grid-spacing);
 
-    div.thumbnail > .thumbnail-content {
+    div.thumbnail {
       height: var(--ds-card-thumbnail-height);
       width: 100%;
-      display: block;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      object-position: 50% 15%;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      display: flex !important;
+
+      > .thumbnail-content {
+        max-height: var(--ds-card-thumbnail-height);
+      }
+    }
+
+    .card-body {
+      padding: .75rem;
     }
   }
 }

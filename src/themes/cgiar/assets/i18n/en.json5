@@ -1,0 +1,181 @@
+{
+  "title": "MELSpace",
+
+  // DSpace default: "All of DSpace"
+  "menu.section.browse_global": "Browse",
+
+  "menu.section.browse_global_by_itemtype": "By Item Type",
+
+  "browse.metadata.itemtype.breadcrumbs": "Browse by Item Type",
+
+  "browse.metadata.itemtype": "Item Type",
+
+  // DSpace default: "DSpace Angular :: "
+  "repository.title.prefix": "MELSpace :: ",
+
+  "search.filters.applied.f.institute": "Author Affiliation",
+
+  "search.filters.applied.f.region": "Region",
+
+  //  "search.filters.applied.f.country": "Location/Country",
+  "search.filters.applied.f.country": "Country",
+
+  //  "search.filters.applied.f.crp": "CGIAR Research Program",
+  "search.filters.applied.f.crp": "CRP",
+
+  "search.filters.applied.f.year": "Year",
+
+  "search.filters.applied.f.project": "Project",
+
+  "search.filters.applied.f.initiative": "CGIAR Initiative",
+
+  "search.filters.applied.f.impact_area": "CGIAR Impact Area",
+
+  "search.filters.applied.f.action_area": "CGIAR Action Area",
+
+  "search.filters.applied.f.accessStatus": "Access Status",
+
+  "search.filters.applied.f.isiJournal": "ISI Journal",
+
+  "search.filters.applied.f.sdg": "SDG",
+
+  "search.filters.applied.f.language": "Language",
+
+  "search.filters.applied.f.agrovocKeywords": "Subject",
+
+  "search.filters.filter.institute.head": "Author Affiliations",
+
+  "search.filters.filter.institute.placeholder": "Author Affiliations",
+
+  "search.filters.filter.institute.label": "Search Author Affiliations",
+
+  "search.filters.filter.region.head": "Region",
+
+  "search.filters.filter.region.placeholder": "Region",
+
+  "search.filters.filter.region.label": "Search Region",
+
+  //  "search.filters.filter.crp.head": "CGIAR Research Programs",
+  //
+  //  "search.filters.filter.crp.placeholder": "CGIAR Research Programs",
+  //
+  //  "search.filters.filter.crp.label": "Search CGIAR Research Programs",
+
+  "search.filters.filter.crp.head": "CRP",
+
+  "search.filters.filter.crp.placeholder": "CRP",
+
+  "search.filters.filter.crp.label": "Search CRP",
+
+  "search.filters.filter.year.head": "Year",
+
+  "search.filters.filter.year.placeholder": "Year",
+
+  "search.filters.filter.year.label": "Search Year",
+
+  "search.filters.filter.project.head": "Project",
+
+  "search.filters.filter.project.placeholder": "Project",
+
+  "search.filters.filter.project.label": "Search Project",
+
+  //  "search.filters.filter.country.head": "Location/Country",
+  //
+  //  "search.filters.filter.country.placeholder": "Location/Country",
+  //
+  //  "search.filters.filter.country.label": "Search Location/Country",
+
+  "search.filters.filter.country.head": "Country",
+
+  "search.filters.filter.country.placeholder": "Country",
+
+  "search.filters.filter.country.label": "Search Country",
+
+  "search.filters.filter.initiative.head": "CGIAR Initiative",
+
+  "search.filters.filter.initiative.placeholder": "CGIAR Initiative",
+
+  "search.filters.filter.initiative.label": "Search CGIAR Initiative",
+
+  "search.filters.filter.impact_area.head": "CGIAR Impact Area",
+
+  "search.filters.filter.impact_area.placeholder": "CGIAR Impact Area",
+
+  "search.filters.filter.impact_area.label": "Search CGIAR Impact Area",
+
+  "search.filters.filter.isiJournal.head": "ISI Journal",
+
+  "search.filters.filter.isiJournal.placeholder": "ISI Journal",
+
+  "search.filters.filter.isiJournal.label": "Search ISI Journal",
+
+  "search.filters.filter.sdg.head": "SDG contribution",
+
+  "search.filters.filter.sdg.placeholder": "SDG",
+
+  "search.filters.filter.sdg.label": "Search SDG",
+
+  "search.filters.filter.action_area.head": "CGIAR Action Area",
+
+  "search.filters.filter.action_area.placeholder": "CGIAR Action Area",
+
+  "search.filters.filter.action_area.label": "Search CGIAR Action Area",
+
+  "search.filters.filter.accessStatus.head": "Access Status",
+
+  "search.filters.filter.accessStatus.placeholder": "Access Status",
+
+  "search.filters.filter.accessStatus.label": "Search Access Status",
+
+  "item.page.dateIssued": "Date Issued",
+
+  "item.page.impact-factor": "Impact factor",
+
+  "item.page.impact-factor.year": "Year",
+
+  "item.page.subject": "Subject(s)",
+
+  "item.page.subject.agrovoc": "AGROVOC Keyword(s)",
+
+  "item.page.uri": "Permanent link",
+
+  "item.page.other.uri": "Other URI",
+
+  "item.page.orcid": "Author(s) ORCID(s)",
+
+  "item.page.statistics.views": "Views",
+
+  "item.page.statistics.downloads": "Downloads",
+
+  "item.page.sdg": "Contributes to SDGs",
+
+  "stats.card.totalItems": "Information Products",
+
+  "stats.card.openlyAccessible": "Openly Accessible",
+
+  "stats.card.countries": "Countries",
+
+  "stats.card.languages": "Languages",
+
+  "stats.card.agrovocKeywords": "AGROVOC Keywords",
+
+  "stats.card.journals": "Journal Articles",
+
+  "stats.card.isiJournals": "ISI Journal",
+
+  "item.page.file.view": "View/Open",
+
+  "item.page.file.correspondingAuthor": "Corresponding Author",
+
+  "list.items.page.authors": "Author(s)",
+
+  "list.items.page.date": "Date",
+
+  "list.items.page.type": "Type",
+
+  "list.items.page.status": "Status",
+
+  "sorting.dcterms.available.ASC": "Date Ascending",
+
+  "sorting.dcterms.available.DESC": "Date Descending"
+}

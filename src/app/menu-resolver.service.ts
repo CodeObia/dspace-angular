@@ -107,9 +107,9 @@ export class MenuResolverService  {
         model: {
           type: MenuItemType.LINK,
           text: `menu.section.browse_global_communities_and_collections`,
-          link: `/community-list`,
+          link: `/communities/3dae5139-cd08-4820-80b9-b4039a9a42ed`,
         } as LinkMenuItemModel,
-      },
+      }
     ];
     // Read the different Browse-By types from config and add them to the browse menu
     this.browseService.getBrowseDefinitions()
