@@ -1,0 +1,25 @@
+:host {
+  display: block;
+
+  .welcome-container {
+    margin: 2rem 0;
+
+    h1 {
+      font-weight: bold;
+    }
+  }
+
+  .jumbotron {
+    background-color: transparent;
+  }
+
+  a {
+    color: var(--ds-home-news-link-color);
+
+    @include hover {
+      color: var(--ds-home-news-link-hover-color);
+    }
+  }
+}
+
+

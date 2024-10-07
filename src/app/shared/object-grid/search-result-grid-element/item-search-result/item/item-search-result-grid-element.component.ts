@@ -44,4 +44,19 @@ export class ItemSearchResultGridElementComponent extends SearchResultGridElemen
     this.itemPageRoute = getItemPageRoute(this.dso);
     this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.dso);
   }
+
+  /**
+   * Helper function to generate search params for the metadata value using its
+   * Discovery index.
+   * @type {string}
+   */
+  generateSearchParams(metadataValue: string, discoveryIndex: string) {
+    const searchFilter = 'f.' + discoveryIndex;
+    const searchValue = metadataValue + ',equals';
+
+    // Note the special syntax for searchFilter, since we want to use the
+    // string value of the searchFilter variable as the object key, not a
+    // literal "searchFilter".
+    return { [searchFilter]: searchValue };
+  }
 }

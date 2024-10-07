@@ -1,0 +1,13 @@
+.list-items-sub-labels {
+  display: inline-block;
+  width: 85px;
+  font-style: italic;
+}
+
+:host {
+  ::ng-deep {
+    .item-page-title-field {
+      font-size: 2rem;
+    }
+  }
+}

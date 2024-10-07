@@ -5,12 +5,23 @@ import { NavbarComponent } from './app/navbar/navbar.component';
 import { HeaderNavbarWrapperComponent } from './app/header-nav-wrapper/header-navbar-wrapper.component';
 import { RootModule } from '../../app/root.module';
 import { NavbarModule } from '../../app/navbar/navbar.module';
+import { ItemPageModule } from '../../app/item-page/item-page.module';
+import { UntypedItemComponent } from './app/item-page/simple/item-types/untyped-item/untyped-item.component';
+import { ItemSharedModule } from '../../app/item-page/item-shared.module';
+import { ResultsBackButtonModule } from '../../app/shared/results-back-button/results-back-button.module';
+import { DsoPageModule } from '../../app/shared/dso-page/dso-page.module';
+import {
+  ItemSearchResultListElementComponent
+} from './app/shared/object-list/search-result-list-element/item-search-result/item-types/item/item-search-result-list-element.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.
  * This will ensure that decorator gets picked up when the app loads
  */
-const ENTRY_COMPONENTS = [];
+const ENTRY_COMPONENTS = [
+  UntypedItemComponent,
+  ItemSearchResultListElementComponent,
+];
 
 const DECLARATIONS = [
   ...ENTRY_COMPONENTS,
@@ -24,6 +35,10 @@ const DECLARATIONS = [
     SharedModule,
     RootModule,
     NavbarModule,
+    ResultsBackButtonModule,
+    ItemPageModule,
+    ItemSharedModule,
+    DsoPageModule,
   ],
   declarations: DECLARATIONS,
   providers: [

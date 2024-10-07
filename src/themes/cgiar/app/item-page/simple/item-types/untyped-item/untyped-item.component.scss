@@ -1,0 +1,35 @@
+@import './../../../../../../../styles/variables.scss';
+
+.standalone-metadata-value {
+  font-size: 1.25rem;
+
+  .icon {
+    color: var(--brand-primary);
+  }
+}
+
+.flex-column {
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+:host {
+  ::ng-deep {
+    .item-page-title-field {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1rem !important;
+      font-weight: bold;
+    }
+  }
+}
+
+.corresponding_author {
+  cursor: pointer;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
