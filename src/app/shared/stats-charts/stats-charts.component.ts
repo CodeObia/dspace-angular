@@ -328,6 +328,63 @@ export class StatsChartsComponent implements OnInit {
           },
           ...this.commonChartOptions,
         } as Highcharts.Options;
+      } else if (this.chartType === 'column') {
+        this.chartOptions = {
+          chart: {
+            type: 'column',
+            animation: true,
+          },
+          boost: {
+            enabled: true,
+            useGPUTranslations: true,
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'Information products'
+            },
+          },
+          xAxis: {
+            type: 'category',
+          },
+          tooltip: {
+            pointFormat: '<b>{point.y:.0f}</b>'
+          },
+          legend: {
+            enabled: false
+          },
+          series: value.data.map((b) => ({
+            name: b.val,
+            data: [{
+              name: b.val,
+              y: b.count,
+              color: b?.color,
+              label: b?.label,
+              routerLink: b?.routerLink,
+              queryParams: b?.queryParams
+            }],
+            dataLabels: {
+              enabled: true,
+              format: '{point.y:.0f}',
+            },
+          })),
+          plotOptions: {
+            series: {
+              cursor: 'pointer',
+              events: {
+                click: function () {
+                  const point: any = this.data?.[0];
+                  if (point) {
+                    router.navigate([point.routerLink], {
+                      queryParams: point.queryParams
+                    });
+                  }
+                },
+              },
+            },
+          },
+          ...this.commonChartOptions,
+        } as Highcharts.Options;
       }
 
       this.initialize();
@@ -369,7 +426,7 @@ export class StatsChartsComponent implements OnInit {
       } as Highcharts.LegendNavigationOptions,
     };
 
-    if (this.chartType === 'column' || this.chartType === 'bar') {
+    if ((this.chartType === 'column' || this.chartType === 'bar') && this.categories) {
       this.chartOptions.xAxis = {categories: this.categories, crosshair: true} as Highcharts.XAxisOptions;
     } else if (this.chartType === 'pie') {
       this.chartOptions.legend.enabled = false;
