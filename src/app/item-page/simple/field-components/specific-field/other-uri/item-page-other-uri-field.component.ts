@@ -43,6 +43,6 @@ export class ItemPageOtherUriFieldComponent extends ItemPageFieldComponent {
   @Input() label: string;
 
   getMdValues() {
-    return this.item?.allMetadata(this.fields).filter(value => !value.value.startsWith(this.appConfig.fileDownload.fileDownloadBaseUrl));
+    return this.item?.allMetadata(this.fields).filter(value => !value.value.startsWith(this.appConfig?.fileDownload?.fileDownloadBaseUrl));
   }
 }
