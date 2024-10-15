@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ObjectListComponent as BaseComponent} from '../../../../../app/shared/object-list/object-list.component';
 
 /**
@@ -11,4 +11,10 @@ import { ObjectListComponent as BaseComponent} from '../../../../../app/shared/o
   templateUrl: './object-list.component.html'
 })
 
-export class ObjectListComponent extends BaseComponent {}
+export class ObjectListComponent extends BaseComponent implements OnInit {
+
+  isBrowseEntry = false;
+  ngOnInit() {
+    this.isBrowseEntry = (this.objects?.payload?.page?.[0] as any)?.type === 'browseEntry';
+  }
+}

@@ -14,8 +14,15 @@
   (paginationChange)="onPaginationChange($event)"
   (prev)="goPrev()"
   (next)="goNext()">
-  <div *ngIf="objects?.hasSucceeded" class="list-unstyled row" [ngClass]="{'ml-4': selectable}">
-    <div *ngFor="let object of objects?.payload?.page; let i = index; let last = last" class="mt-4 mb-4 d-flex col-md-6" [class.border-bottom]="hasBorder && !last" [attr.data-test]="'list-object' | dsBrowserOnly">
+  <div *ngIf="objects?.hasSucceeded" class="list-unstyled"
+       [class.row]="!isBrowseEntry"
+       [ngClass]="{'ml-4': selectable}">
+    <div *ngFor="let object of objects?.payload?.page; let i = index; let last = last"
+         class="d-flex"
+         [class.my-2]="isBrowseEntry"
+         [class.my-4]="!isBrowseEntry"
+         [class.col-md-6]="!isBrowseEntry"
+         [class.border-bottom]="hasBorder && !last" [attr.data-test]="'list-object' | dsBrowserOnly">
       <ds-selectable-list-item-control *ngIf="selectable" [index]="i"
                                        [object]="object"
                                        [selectionConfig]="selectionConfig"

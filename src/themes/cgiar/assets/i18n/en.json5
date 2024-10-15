@@ -6,19 +6,27 @@
 
   "menu.section.browse_global_by_itemtype": "By Item Type",
 
+  "menu.section.browse_global_by_initiative": "By Initiative",
+
+  "menu.section.browse_global_by_country": "By Country",
+
   "browse.metadata.itemtype.breadcrumbs": "Browse by Item Type",
 
-  "menu.section.browse_global_by_initiative": "Browse by Initiative",
+  "browse.metadata.initiative.breadcrumbs": "Browse by Initiative",
 
-  "menu.section.browse_global_by_country": "Browse by Country",
+  "browse.metadata.country.breadcrumbs": "Browse by Country",
 
   "browse.metadata.itemtype": "Item Type",
+
+  "browse.metadata.initiative": "Initiative",
+
+  "browse.metadata.country": "Country",
+
+  "browse.comcol.by.itemtype": "By Item Type",
 
   "browse.comcol.by.initiative": "By Initiative",
 
   "browse.comcol.by.country": "By Country",
-
-  "browse.comcol.by.itemtype": "By Item Type",
 
   // DSpace default: "DSpace Angular :: "
   "repository.title.prefix": "WorldFish Digital Repository :: ",

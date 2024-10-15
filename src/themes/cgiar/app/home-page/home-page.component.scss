@@ -5,19 +5,32 @@
     color: white;
     position: relative;
 
-    &:before {
-      content: ' ';
-      display: block;
+    > .container {
+      position: relative;
+      z-index: 1;
+
+      a {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      @media (min-width: map-get($grid-breakpoints, sm)) {
+        a {
+          width: unset !important;
+          margin-bottom: 0 !important;
+        }
+      }
+    }
+
+    > img {
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      object-position: top;
       opacity: 0.02;
-      background-image: url(/assets/cgiar/images/network.png);
-      background-repeat: repeat-y;
-      background-position: 50% 0;
-      background-size: cover;
     }
 
     a {

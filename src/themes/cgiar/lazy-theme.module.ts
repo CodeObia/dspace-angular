@@ -4,14 +4,10 @@ import { StatisticsModule } from '../../app/statistics/statistics.module';
 import { HomePageModule } from '../../app/home-page/home-page.module';
 import { ItemPageModule } from '../../app/item-page/item-page.module';
 import { StatisticsPageModule } from '../../app/statistics-page/statistics-page.module';
-import { CommunityPageModule } from '../../app/community-page/community-page.module';
-import { ComcolModule } from '../../app/shared/comcol/comcol.module';
 import { HomePageComponent } from './app/home-page/home-page.component';
 import { HomeNewsComponent } from './app/home-page/home-news/home-news.component';
 import { SearchFormComponent } from './app/shared/search-form/search-form.component';
 import { FullItemPageComponent } from './app/item-page/full/full-item-page.component';
-import { CollectionPageComponent } from './app/collection-page/collection-page.component';
-import { CommunityPageComponent } from './app/community-page/community-page.component';
 import { ItemStatisticsPageComponent } from './app/statistics-page/item-statistics-page/item-statistics-page.component';
 import { CollectionStatisticsPageComponent } from './app/statistics-page/collection-statistics-page/collection-statistics-page.component';
 import { CommunityStatisticsPageComponent } from './app/statistics-page/community-statistics-page/community-statistics-page.component';
@@ -28,8 +24,6 @@ const DECLARATIONS = [
   HomeNewsComponent,
   SearchFormComponent,
   FullItemPageComponent,
-  CollectionPageComponent,
-  CommunityPageComponent,
   ItemStatisticsPageComponent,
   CollectionStatisticsPageComponent,
   CommunityStatisticsPageComponent,
@@ -40,12 +34,10 @@ const DECLARATIONS = [
 
 @NgModule({
   imports: [
-    ComcolModule,
     ItemSharedModule,
     HomePageModule,
     ItemPageModule,
     StatisticsPageModule,
-    CommunityPageModule,
     DsoPageModule,
     SharedModule,
     StatisticsModule,

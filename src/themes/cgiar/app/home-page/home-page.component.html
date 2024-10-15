@@ -37,67 +37,38 @@
 
 <div class="research-info-container">
   <div class="container mt-5 py-5">
-    <h3 class="display-4 mb-5">Research related info</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <a target="_blank" rel="noopener noreferrer" href="https://www.altmetric.com" class="d-flex text-right">
-          <div>
-            <h1>Altmetric</h1>
-            <p>
-              Metrics for assessing other measures of use and influence, such as
-              number of times publication is read, downloaded, saved, mentioned or cited in popular online sources.
-            </p>
-          </div>
-          <div class="mx-5 d-flex justify-content-center align-items-start">
-            <img src="assets/cgiar/images/Altmetric_logo.png">
-          </div>
-        </a>
-      </div>
-      <div class="col-md-6">
-        <a target="_blank" rel="noopener noreferrer" href="https://orcid.org" class="d-flex">
-          <div class="mx-5 d-flex justify-content-center align-items-start">
-            <img src="assets/cgiar/images/ORCID_Logo.png">
-          </div>
-          <div>
-            <h1>ORCID</h1>
-            <p>
-              Provides a persistent digital identifier (an ORCID ID) that you own and
-              control. Connect this ID with professional information – grants, publications, peer review, etc.
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-6">
-        <a target="_blank" rel="noopener noreferrer" href="https://agrovoc.fao.org/browse/agrovoc/en"
-           class="d-flex text-right">
-          <div>
-            <h1>AGROVOC</h1>
-            <p>
-              AGROVOC is a multilingual controlled vocabulary covering areas of interest
-              of the Food and Agriculture Organization of the United Nations, aiming to promote the visibility of
-              research
-              produced among FAO members.
-            </p>
-          </div>
-          <div class="mx-5 d-flex justify-content-center align-items-start">
-            <img src="assets/cgiar/images/AGROVOC-logo.gif">
-          </div>
-        </a>
-      </div>
+    <h3 class="display-4 mb-3">Research related info</h3>
+    <div class="d-flex justify-content-between flex-wrap">
+      <a target="_blank" rel="noopener noreferrer" href="https://www.altmetric.com"
+         class="d-flex flex-column justify-content-center align-items-center flex-wrap gap-3"
+         ngbTooltip="Metrics for assessing other measures of use and influence, such as number of times publication is read, downloaded, saved, mentioned or cited in popular online sources.">
+        <img src="assets/cgiar/images/Altmetric_logo.png">
+        <h1>
+          Altmetric
+        </h1>
+      </a>
+      <a target="_blank" rel="noopener noreferrer" href="https://orcid.org"
+         class="d-flex flex-column justify-content-center align-items-center flex-wrap gap-3"
+         ngbTooltip="Provides a persistent digital identifier (an ORCID ID) that you own and control. Connect this ID with professional information – grants, publications, peer review, etc.">
+        <img src="assets/cgiar/images/ORCID_Logo.png">
+        <h1>
+          ORCID
+        </h1>
+      </a>
+      <a target="_blank" rel="noopener noreferrer" href="https://agrovoc.fao.org/browse/agrovoc/en"
+         class="d-flex flex-column justify-content-center align-items-center flex-wrap gap-3"
+         ngbTooltip="AGROVOC is a multilingual controlled vocabulary covering areas of interest of the Food and Agriculture Organization of the United Nations, aiming to promote the visibility of research produced among FAO members.">
+        <img src="assets/cgiar/images/AGROVOC-logo.gif">
+        <h1>
+          AGROVOC
+        </h1>
+      </a >
     </div>
   </div>
+  <img src="/assets/cgiar/images/network.png">
 </div>
 
 <div class="container mt-5">
-  <div class="mb-4">
-    <ds-item-statistics [itemId]="null"
-                        [dspaceObjectType]="'repository'"
-                        [labelViews]="'item.page.statistics.views'"
-                        [labelDownloads]="'item.page.statistics.downloads'"
-                        [renderAggregations]="false">
-    </ds-item-statistics>
-  </div>
-
   <ds-cards *ngIf="chartsCardsSettings"
             [cardsSettings]="chartsCardsSettings"
             [cardHeader]="''"
