@@ -26,7 +26,7 @@ COPY config/config.prod.yml /app/config/config.prod.yml
 COPY config/nginx-default.conf /etc/nginx/conf.d/default.conf
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV NODE_VERSION 18.17.1
+ENV NODE_VERSION 20.18.0
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
