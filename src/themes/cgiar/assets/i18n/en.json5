@@ -1,8 +1,9 @@
 {
   "title": "WorldFish Digital Repository",
 
-  // DSpace default: "All of DSpace"
   "menu.section.browse_global": "Browse",
+
+  "menu.section.datasets": "Datasets",
 
   "menu.section.browse_global_by_itemtype": "By Item Type",
 
@@ -117,7 +118,7 @@
 
   "item.page.date": "Date available",
 
-  "item.page.subject": "Subject(s)",
+  "item.page.subject": "Keyword(s)",
 
   "item.page.subject.agrovoc": "AGROVOC Keyword(s)",
 

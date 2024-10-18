@@ -12,7 +12,6 @@ import { ItemStatisticsPageComponent } from './app/statistics-page/item-statisti
 import { CollectionStatisticsPageComponent } from './app/statistics-page/collection-statistics-page/collection-statistics-page.component';
 import { CommunityStatisticsPageComponent } from './app/statistics-page/community-statistics-page/community-statistics-page.component';
 import { SiteStatisticsPageComponent } from './app/statistics-page/site-statistics-page/site-statistics-page.component';
-import { ObjectListComponent } from './app/shared/object-list/object-list.component';
 import { FileDownloadLinkComponent } from './app/shared/file-download-link/file-download-link.component';
 
 import { ItemSharedModule } from '../../app/item-page/item-shared.module';
@@ -28,7 +27,6 @@ const DECLARATIONS = [
   CollectionStatisticsPageComponent,
   CommunityStatisticsPageComponent,
   SiteStatisticsPageComponent,
-  ObjectListComponent,
   FileDownloadLinkComponent,
 ];
 

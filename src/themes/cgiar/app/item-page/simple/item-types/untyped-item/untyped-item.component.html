@@ -83,9 +83,13 @@
     </div>
   </div>
   <div class="col-xs-12 col-md-6">
-    <div class="unicode-bidi-text justify-text margin-bottom-15">
-      <span [innerHTML]="object.firstMetadataValue('dc.description.abstract')"></span>
-    </div>
+    <ds-truncatable [id]="object.id" *ngIf="object.firstMetadataValue('dc.description.abstract')">
+      <div class="unicode-bidi-text justify-text margin-bottom-15">
+        <ds-truncatable-part [id]="object.id" [minLines]="10">
+          <span [innerHTML]="object.firstMetadataValue('dc.description.abstract')"></span>
+        </ds-truncatable-part>
+      </div>
+    </ds-truncatable>
     <div class="unicode-bidi-text justify-text">
       <ds-generic-item-page-field [item]="object"
                                   [fields]="['dc.identifier.citation']"
@@ -143,19 +147,11 @@
     </ds-item-page-sdg-field>
     <div class="unicode-bidi-text">
       <ds-item-page-agrovoc [item]="object"
-                            [fields]="['mel.subject.agrovoc']"
+                            [fields]="['mel.subject.agrovoc', 'dc.subject']"
                             [separator]="'; '"
-                            [label]="'item.page.subject.agrovoc'"
+                            [label]="'item.page.subject'"
                             [index]="'subject'">
       </ds-item-page-agrovoc>
-    </div>
-    <div class="unicode-bidi-text">
-      <ds-item-page-metadata-search-link [item]="object"
-                                         [fields]="['dc.subject']"
-                                         [separator]="'; '"
-                                         [label]="'item.page.subject'"
-                                         [index]="'subject'">
-      </ds-item-page-metadata-search-link>
     </div>
   </div>
 </div>

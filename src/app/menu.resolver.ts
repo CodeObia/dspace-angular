@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { combineLatest as observableCombineLatest, combineLatest, Observable, of as observableOf } from 'rxjs';
 import { MenuID } from './shared/menu/menu-id.model';
@@ -48,6 +48,7 @@ import {
   ExportBatchSelectorComponent
 } from './shared/dso-selector/modal-wrappers/export-batch-selector/export-batch-selector.component';
 import { AuthService } from './core/auth/auth.service';
+import { APP_CONFIG, AppConfig } from '../config/app-config.interface';
 
 /**
  * Creates all of the app's menus
@@ -63,6 +64,7 @@ export class MenuResolver implements Resolve<boolean> {
     protected modalService: NgbModal,
     protected scriptDataService: ScriptDataService,
     protected authService: AuthService,
+    @Inject(APP_CONFIG) private appConfig: AppConfig,
   ) {
   }
 
@@ -146,7 +148,7 @@ export class MenuResolver implements Resolve<boolean> {
             index: 4,
             model: {
               type: MenuItemType.LINK,
-              text: `Datasets`,
+              text: `menu.section.datasets`,
               link: `/datasets`
             } as LinkMenuItemModel
           });
