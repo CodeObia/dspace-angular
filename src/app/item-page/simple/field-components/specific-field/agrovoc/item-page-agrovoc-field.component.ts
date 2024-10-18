@@ -21,7 +21,7 @@ export class ItemPageAgrovocFieldComponent extends ItemPageMetadataSearchLinkFie
     const split = metadataValue.split(' | ');
     return {
       keyword: split[0],
-      link: split[1]
+      link: split?.[1]
     }
   }
 }
