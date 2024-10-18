@@ -12,10 +12,6 @@
   font-style: italic;
 }
 
-.item-list-bottom {
-  border-top: solid 1px #e5e5e5;
-}
-
 :host {
   ::ng-deep {
     .item-page-title-field {
@@ -23,9 +19,13 @@
     }
 
     ds-thumbnail {
-      > .thumbnail > img {
-        box-shadow: none !important;
-        max-height: 230px;
+      > .thumbnail {
+        text-align: center;
+
+        > img {
+          box-shadow: none !important;
+          max-height: 230px;
+        }
       }
 
       .thumbnail-content.outer {
