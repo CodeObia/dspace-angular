@@ -116,17 +116,30 @@ export class MenuResolver implements Resolve<boolean> {
       .subscribe((browseDefListRD: RemoteData<PaginatedList<BrowseDefinition>>) => {
         if (browseDefListRD.hasSucceeded) {
           browseDefListRD.payload.page.forEach((browseDef: BrowseDefinition) => {
-            menuList.push({
-              id: `browse_global_by_${browseDef.id}`,
-              parentID: 'browse_global',
-              active: false,
-              visible: true,
-              model: {
-                type: MenuItemType.LINK,
-                text: `menu.section.browse_global_by_${browseDef.id}`,
-                link: `/browse/${browseDef.id}`
-              } as LinkMenuItemModel
-            });
+            if (browseDef.id !== 'initiative' && browseDef.id !== 'crp') {
+              menuList.push({
+                id: `browse_global_by_${browseDef.id}`,
+                parentID: 'browse_global',
+                active: false,
+                visible: true,
+                model: {
+                  type: MenuItemType.LINK,
+                  text: `menu.section.browse_global_by_${browseDef.id}`,
+                  link: `/browse/${browseDef.id}`
+                } as LinkMenuItemModel
+              });
+            }
+          });
+          menuList.push({
+            id: `browse_global_by_researchProgram`,
+            parentID: 'browse_global',
+            active: false,
+            visible: true,
+            model: {
+              type: MenuItemType.LINK,
+              text: `menu.section.browse_global_by_researchProgram`,
+              link: `/custombrowse`
+            } as LinkMenuItemModel
           });
           menuList.push(
             /* Browse */

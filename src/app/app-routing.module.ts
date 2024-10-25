@@ -253,6 +253,12 @@ import { ViewTrackerResolverService } from './statistics/angulartics/dspace/view
               .then((m) => m.DatasetsPageRoutingModule),
             canActivate: [EndUserAgreementCurrentUserGuard]
           },
+          {
+            path: 'custombrowse',
+            loadChildren: () => import('./custom-browse-page/custom-browse-page-routing.module')
+              .then((m) => m.CustomBrowsePageRoutingModule),
+            canActivate: [EndUserAgreementCurrentUserGuard]
+          },
           { path: '**', pathMatch: 'full', component: ThemedPageNotFoundComponent },
         ]
       }

@@ -9,11 +9,19 @@
 
   "menu.section.browse_global_by_initiative": "By Initiative",
 
+  "menu.section.browse_global_by_crp": "By CRP",
+
+  "menu.section.browse_global_by_researchProgram": "By Research Program",
+
   "menu.section.browse_global_by_country": "By Country",
 
   "browse.metadata.itemtype.breadcrumbs": "Browse by Item Type",
 
   "browse.metadata.initiative.breadcrumbs": "Browse by Initiative",
+
+  "browse.metadata.crp.breadcrumbs": "Browse by CRP",
+
+  "browse.metadata.researchProgram.breadcrumbs": "Browse by Research Program",
 
   "browse.metadata.country.breadcrumbs": "Browse by Country",
 
@@ -21,11 +29,23 @@
 
   "browse.metadata.initiative": "Initiative",
 
+  "browse.metadata.crp": "CRP",
+
+  "browse.metadata.researchProgram": "Research Program",
+
+  "browse.metadata.researchProgram.initiative": "Browse by Initiative",
+
+  "browse.metadata.researchProgram.crp": "Browse by CRP",
+
   "browse.metadata.country": "Country",
 
   "browse.comcol.by.itemtype": "By Item Type",
 
   "browse.comcol.by.initiative": "By Initiative",
+
+  "browse.comcol.by.crp": "By CRP",
+
+  "browse.comcol.by.researchProgram": "By Research Program",
 
   "browse.comcol.by.country": "By Country",
 
@@ -68,17 +88,17 @@
 
   "search.filters.filter.region.label": "Search Region",
 
-    "search.filters.filter.crp.head": "CGIAR Research Programs",
+  "search.filters.filter.crp.head": "CGIAR Research Programs",
 
-    "search.filters.filter.crp.placeholder": "CGIAR Research Programs",
+  "search.filters.filter.crp.placeholder": "CGIAR Research Programs",
 
-    "search.filters.filter.crp.label": "Search CGIAR Research Programs",
+  "search.filters.filter.crp.label": "Search CGIAR Research Programs",
 
-    "search.filters.filter.country.head": "Location/Country",
+  "search.filters.filter.country.head": "Location/Country",
 
-    "search.filters.filter.country.placeholder": "Location/Country",
+  "search.filters.filter.country.placeholder": "Location/Country",
 
-    "search.filters.filter.country.label": "Search Location/Country",
+  "search.filters.filter.country.label": "Search Location/Country",
 
   "search.filters.filter.initiative.head": "CGIAR Initiative",
 

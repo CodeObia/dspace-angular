@@ -16,7 +16,6 @@ import { FileDownloadLinkComponent } from './app/shared/file-download-link/file-
 
 import { ItemSharedModule } from '../../app/item-page/item-shared.module';
 import { DsoPageModule } from '../../app/shared/dso-page/dso-page.module';
-import { DatasetsPageModule } from 'src/app/datasets-page/datasets-page.module';
 
 const DECLARATIONS = [
   HomePageComponent,
@@ -39,7 +38,6 @@ const DECLARATIONS = [
     DsoPageModule,
     SharedModule,
     StatisticsModule,
-    DatasetsPageModule,
   ],
   declarations: DECLARATIONS,
 })

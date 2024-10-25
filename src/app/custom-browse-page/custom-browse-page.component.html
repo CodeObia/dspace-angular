@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>
+    {{
+      'browse.title' | translate:
+        {
+          collection: '',
+          field: 'browse.metadata.researchProgram' | translate,
+          startsWith: '',
+          value: ''
+        }
+    }}
+  </h2>
+
+  <div>
+    <a routerLink="/browse/initiative">
+      <div class="btn-group">
+        <span class="btn btn-default">
+          <span class="fa fa-chevron-right"></span>
+        </span>
+        <h3 class="align-middle pt-2 lead">
+          {{ 'browse.metadata.researchProgram.initiative' | translate }}
+        </h3>
+      </div>
+    </a>
+  </div>
+
+  <div>
+    <a routerLink="/browse/crp">
+      <div class="btn-group">
+        <span class="btn btn-default">
+          <span class="fa fa-chevron-right"></span>
+        </span>
+        <h3 class="align-middle pt-2 lead">
+          {{ 'browse.metadata.researchProgram.crp' | translate }}
+        </h3>
+      </div>
+    </a>
+  </div>
+</div>
+
+

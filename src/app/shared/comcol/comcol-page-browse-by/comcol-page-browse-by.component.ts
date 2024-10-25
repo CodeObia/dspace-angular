@@ -50,6 +50,7 @@ export class ComcolPageBrowseByComponent implements OnInit {
       .subscribe((browseDefListRD: RemoteData<PaginatedList<BrowseDefinition>>) => {
         if (browseDefListRD.hasSucceeded) {
           this.allOptions = browseDefListRD.payload.page
+            .filter((config: BrowseDefinition) => config.id !== 'initiative' && config.id !== 'crp')
             .map((config: BrowseDefinition) => ({
               id: config.id,
               label: `browse.comcol.by.${config.id}`,
