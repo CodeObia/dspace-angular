@@ -63,8 +63,8 @@
           <tbody>
           <tr *ngFor="let country of aggregations.country">
             <td>{{ country.label }}</td>
-            <td class="views-elements">{{ country.views }}</td>
-            <td class="downloads-elements">{{ country.downloads }}</td>
+            <td class="views-elements">{{ country.views | number }}</td>
+            <td class="downloads-elements">{{ country.downloads | number }}</td>
           </tr>
           </tbody>
         </table>
@@ -83,8 +83,8 @@
           <tbody>
           <tr *ngFor="let city of aggregations.city">
             <td>{{ city.label }}</td>
-            <td class="views-elements">{{ city.views }}</td>
-            <td class="downloads-elements">{{ city.downloads }}</td>
+            <td class="views-elements">{{ city.views | number }}</td>
+            <td class="downloads-elements">{{ city.downloads | number }}</td>
           </tr>
           </tbody>
         </table>
@@ -103,8 +103,8 @@
           <tbody>
           <tr *ngFor="let month of aggregations.month">
             <td>{{ month.label }}</td>
-            <td class="views-elements">{{ month.views }}</td>
-            <td class="downloads-elements">{{ month.downloads }}</td>
+            <td class="views-elements">{{ month.views | number }}</td>
+            <td class="downloads-elements">{{ month.downloads | number }}</td>
           </tr>
           </tbody>
         </table>
