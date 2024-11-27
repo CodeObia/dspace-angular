@@ -162,7 +162,7 @@ export class CardsComponent implements OnInit {
           }
         } else {
           const cardData: Card = {
-            value: stats[facetName],
+            value: stats[facetName] as number,
             total: 0,
             settings: card,
           };
