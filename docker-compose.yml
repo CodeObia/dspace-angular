@@ -13,6 +13,7 @@ networks:
   dspacenet:
 services:
   dspace-angular:
+    restart: unless-stopped
     container_name: dspace-angular
     image: dspace/dspace-angular:dspace-7_x
     build:
