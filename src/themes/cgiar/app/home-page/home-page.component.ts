@@ -179,7 +179,7 @@ export class HomePageComponent extends BaseComponent {
       routerLink: '/search',
       queryParams: null,
       chart: {
-        chart_type: 'column',
+        chart_type: 'treemap',
         field: 'language_keyword',
         facet_type: 'aggregated',
         limit: 100,
