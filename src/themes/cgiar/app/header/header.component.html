@@ -8,6 +8,9 @@
       <a class="d-block my-2 my-md-0" routerLink="/home" [attr.aria-label]="'home.title' | translate">
         <img id="header-logo" src="assets/cgiar/images/repository-logo.png" [attr.alt]="'menu.header.image.logo' | translate"/>
       </a>
+      <img src="https://assets.agris.fao.org/public/images/2024-10/ADP_cert_2025.png"
+           alt="QV0 – FAO AGRIS data provider 2025" title="Seal of recognition for active AGRIS Data Providers 2025"
+           id="header-logo-2">
       <nav *ngIf="!(isMobile$ | async)" class="navbar navbar-expand p-0 align-items-stretch align-self-stretch" id="desktop-navbar" [attr.aria-label]="'nav.main.description' | translate">
         <ds-themed-navbar></ds-themed-navbar>
       </nav>
