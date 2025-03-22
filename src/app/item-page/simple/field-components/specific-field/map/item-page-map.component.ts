@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Inject, Input, PLATFORM_ID } from '@angular/c
 import { ItemPageFieldComponent } from '../item-page-field.component';
 import { Item } from '../../../../../core/shared/item.model';
 import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
+import { BrowseService } from '../../../../../core/browse/browse.service';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig, APP_CONFIG } from '../../../../../../config/app-config.interface';
 import {isPlatformBrowser} from "@angular/common";
@@ -23,10 +24,11 @@ export class ItemPageMapComponent extends ItemPageFieldComponent implements Afte
   constructor(
       private httpClient: HttpClient,
       protected browseDefinitionDataService: BrowseDefinitionDataService,
+      protected browseService: BrowseService,
       @Inject(APP_CONFIG) private appConfig: AppConfig,
       @Inject(PLATFORM_ID) private platform: Object,
   ) {
-    super(browseDefinitionDataService);
+    super(browseDefinitionDataService, browseService);
     if (isPlatformBrowser(platform)) {
       this.L = require('leaflet');
     }

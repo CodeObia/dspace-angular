@@ -4,6 +4,7 @@ import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
 import { HttpClient } from '@angular/common/http';
 import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
+import { BrowseService } from '../../../../../core/browse/browse.service';
 import { APP_CONFIG, AppConfig } from '../../../../../../config/app-config.interface';
 
 @Component({
@@ -19,9 +20,10 @@ export class ItemPagePartnersLogosFieldComponent extends ItemPageFieldComponent 
   constructor(
     private httpClient: HttpClient,
     protected browseDefinitionDataService: BrowseDefinitionDataService,
+    protected browseService: BrowseService,
     @Inject(APP_CONFIG) private appConfig: AppConfig,
   ) {
-    super(browseDefinitionDataService);
+    super(browseDefinitionDataService, browseService);
   }
 
   /**
