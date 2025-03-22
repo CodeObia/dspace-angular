@@ -4,6 +4,7 @@ import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
 import { APP_CONFIG, AppConfig } from '../../../../../../config/app-config.interface';
 import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
+import { BrowseService } from '../../../../../core/browse/browse.service';
 
 @Component({
   selector: 'ds-item-page-other-uri-field',
@@ -16,9 +17,10 @@ import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-d
 export class ItemPageOtherUriFieldComponent extends ItemPageFieldComponent {
   constructor(
     protected browseDefinitionDataService: BrowseDefinitionDataService,
+    protected browseService: BrowseService,
     @Inject(APP_CONFIG) private appConfig: AppConfig,
   ) {
-    super(browseDefinitionDataService);
+    super(browseDefinitionDataService, browseService);
   }
 
   /**
