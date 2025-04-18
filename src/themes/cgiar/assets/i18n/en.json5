@@ -70,6 +70,8 @@
 
   "search.filters.applied.f.isiJournal": "ISI Journal",
 
+  "search.filters.applied.f.project": "Project",
+
   "search.filters.applied.f.sdg": "SDG",
 
   "search.filters.applied.f.language": "Language",
@@ -135,6 +137,12 @@
   "search.filters.filter.accessStatus.placeholder": "Access Status",
 
   "search.filters.filter.accessStatus.label": "Search Access Status",
+
+  "search.filters.filter.project.head": "Project",
+
+  "search.filters.filter.project.placeholder": "Project",
+
+  "search.filters.filter.project.label": "Search Project",
 
   "item.page.date": "Date available",
 
