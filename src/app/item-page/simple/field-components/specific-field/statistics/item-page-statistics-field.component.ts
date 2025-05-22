@@ -2,11 +2,16 @@ import { Component, Input } from '@angular/core';
 
 import { ItemPageFieldComponent } from '../item-page-field.component';
 import { Item } from '../../../../../core/shared/item.model';
+import {ItemStatisticsComponent} from "../../../../../shared/item-statistics/item-statistics.component";
 
 @Component({
   selector: 'ds-item-page-statistics',
   styleUrls: ['./item-page-statistics-field.component.scss'],
-  templateUrl: './item-page-statistics-field.component.html'
+  templateUrl: './item-page-statistics-field.component.html',
+  standalone: true,
+  imports: [
+    ItemStatisticsComponent
+  ]
 })
 /**
  * This component renders a statistics (views and downloads) chart.

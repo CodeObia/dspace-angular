@@ -5,11 +5,25 @@ import { HttpClient } from '@angular/common/http';
 import { APP_CONFIG, AppConfig } from '../../../config/app-config.interface';
 import { CardSettings } from './card-settings.type';
 import { Card } from './card.type';
+import {LoadingComponent} from "../../../themes/custom/app/shared/loading/loading.component";
+import {TranslateModule} from "@ngx-translate/core";
+import {DecimalPipe, NgTemplateOutlet} from "@angular/common";
+import {StatsChartsComponent} from "../stats-charts/stats-charts.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'ds-cards',
   styleUrls: ['./cards.component.scss'],
-  templateUrl: './cards.component.html'
+  templateUrl: './cards.component.html',
+  standalone: true,
+  imports: [
+    LoadingComponent,
+    TranslateModule,
+    NgTemplateOutlet,
+    StatsChartsComponent,
+    RouterLink,
+    DecimalPipe
+  ]
 })
 /**
  * This component renders summary cards
@@ -162,7 +176,7 @@ export class CardsComponent implements OnInit {
           }
         } else {
           const cardData: Card = {
-            value: stats[facetName],
+            value: stats[facetName] as number,
             total: 0,
             settings: card,
           };

@@ -2,10 +2,21 @@ import { Component, Input } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import {
+  MetadataFieldWrapperComponent
+} from "../../../../../shared/metadata-field-wrapper/metadata-field-wrapper.component";
+import {TranslateModule} from "@ngx-translate/core";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'ds-item-page-metadata-search-link',
-  templateUrl: './item-page-metadata-search-link-field.component.html'
+  templateUrl: './item-page-metadata-search-link-field.component.html',
+  standalone: true,
+  imports: [
+    MetadataFieldWrapperComponent,
+    TranslateModule,
+    RouterLink
+  ]
 })
 /**
  * This component renders a Discovery search link for a metadata value.

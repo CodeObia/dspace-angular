@@ -2,11 +2,18 @@ import { Component, Input } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import {TranslateModule} from "@ngx-translate/core";
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'ds-item-page-orcid-field',
   styleUrls: ['item-page-orcid-field.component.scss'],
-  templateUrl: './item-page-orcid-field.component.html'
+  templateUrl: './item-page-orcid-field.component.html',
+  standalone: true,
+  imports: [
+    TranslateModule,
+    NgTemplateOutlet
+  ]
 })
 /**
  * This component renders an ORCID identifier as a name, icon, and link.

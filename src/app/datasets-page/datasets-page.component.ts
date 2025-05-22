@@ -1,11 +1,22 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { DatasetsPageService } from './datasets-page.service';
 import { APP_CONFIG, AppConfig } from '../../config/app-config.interface';
+import {TranslateModule} from "@ngx-translate/core";
+import {ThemedThumbnailComponent} from "../thumbnail/themed-thumbnail.component";
+import {TruncatableComponent} from "../shared/truncatable/truncatable.component";
+import {TruncatablePartComponent} from "../shared/truncatable/truncatable-part/truncatable-part.component";
 
 @Component({
   selector: 'ds-datasets-page',
   templateUrl: './datasets-page.component.html',
-  styleUrls: ['./datasets-page.component.scss']
+  styleUrls: ['./datasets-page.component.scss'],
+  standalone: true,
+  imports: [
+    TranslateModule,
+    ThemedThumbnailComponent,
+    TruncatableComponent,
+    TruncatablePartComponent
+  ]
 })
 export class DatasetsPageComponent implements OnInit {
   constructor(

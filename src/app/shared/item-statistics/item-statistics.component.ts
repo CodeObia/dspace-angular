@@ -6,11 +6,25 @@ import CountryISO from '@mohammad231/iso_3166-1';
 import { Country } from '@mohammad231/iso_3166-1/iso_3166-1';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { Statistics } from './statistics.type';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {TranslateModule} from "@ngx-translate/core";
+import {AsyncPipe, DecimalPipe} from "@angular/common";
+import {ShortNumberPipe} from "../utils/short-number.pipe";
+import {LoadingComponent} from "../../../themes/custom/app/shared/loading/loading.component";
 
 @Component({
   selector: 'ds-item-statistics',
   styleUrls: ['./item-statistics.component.scss'],
-  templateUrl: './item-statistics.component.html'
+  templateUrl: './item-statistics.component.html',
+  standalone: true,
+  imports: [
+    NgbModule,
+    TranslateModule,
+    DecimalPipe,
+    ShortNumberPipe,
+    AsyncPipe,
+    LoadingComponent
+  ]
 })
 /**
  * This component renders a statistics (views and downloads) chart and aggregated tables

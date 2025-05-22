@@ -2,11 +2,18 @@ import { Component, Input } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import {TranslateModule} from "@ngx-translate/core";
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'ds-item-page-license-field',
   styleUrls: ['./item-page-license-field.component.scss'],
-  templateUrl: './item-page-license-field.component.html'
+  templateUrl: './item-page-license-field.component.html',
+  standalone: true,
+  imports: [
+    TranslateModule,
+    NgTemplateOutlet
+  ]
 })
 /**
  * This component renders the license section.

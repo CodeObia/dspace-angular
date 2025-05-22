@@ -6,11 +6,16 @@ import { HttpClient } from '@angular/common/http';
 import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
 import { BrowseService } from '../../../../../core/browse/browse.service';
 import { APP_CONFIG, AppConfig } from '../../../../../../config/app-config.interface';
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'ds-item-page-partners-logos-field',
   styleUrls: ['./item-page-partners-logos-field.component.scss'],
-  templateUrl: './item-page-partners-logos-field.component.html'
+  templateUrl: './item-page-partners-logos-field.component.html',
+  standalone: true,
+  imports: [
+    TranslateModule
+  ]
 })
 /**
  * This component renders partners logos.

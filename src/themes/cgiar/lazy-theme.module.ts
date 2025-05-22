@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../app/shared/shared.module';
 import { SearchFormComponent } from './app/shared/search-form/search-form.component';
 import { ItemStatisticsPageComponent } from './app/statistics-page/item-statistics-page/item-statistics-page.component';
 
@@ -9,10 +8,7 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
-    SharedModule,
-  ],
-  declarations: DECLARATIONS,
+    imports: [...DECLARATIONS],
 })
 
   /**

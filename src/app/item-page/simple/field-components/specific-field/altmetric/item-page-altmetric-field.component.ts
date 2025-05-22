@@ -2,10 +2,15 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'ds-item-page-altmetric-field',
-  templateUrl: './item-page-altmetric-field.component.html'
+  templateUrl: './item-page-altmetric-field.component.html',
+  standalone: true,
+  imports: [
+    NgTemplateOutlet
+  ]
 })
 /**
  * This component renders an Altmetric badge.

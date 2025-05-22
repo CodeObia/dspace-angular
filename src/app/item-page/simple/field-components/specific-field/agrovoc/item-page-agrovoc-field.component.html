@@ -1,21 +1,27 @@
-<div class="item-page-field" *ngIf="item?.allMetadata(fields).length">
-  <ds-metadata-field-wrapper>
-    <div class="simple-view-element">
-      <h2 class="simple-view-element-header">{{ label | translate }}</h2>
-      <div class="simple-view-element-body">
-        <!-- Iterate over metadata values and generate search links -->
-        <ng-container *ngFor="let mdValue of item?.allMetadata(fields); let last=last;">
-          <a routerLink="/search" [queryParams]="generateSearchParams(splitLink(mdValue.value).keyword, index)"
-             [innerHTML]="splitLink(mdValue.value).keyword">
-          </a>
-          <a *ngIf="splitLink(mdValue.value)?.link" target="_blank" rel="noopener noreferrer"
-             href="{{ splitLink(mdValue.value).link }}"
-             ngbTooltip="AGROVOC">
-            <img src="assets/cgiar/images/AGROVOC-logo.gif" class="agrovoc-image">
-          </a>
-          <span class="separator" *ngIf="!last" [innerHTML]="separator"></span>
-        </ng-container>
+@if (item?.allMetadata(fields).length) {
+  <div class="item-page-field">
+    <ds-metadata-field-wrapper>
+      <div class="simple-view-element">
+        <h2 class="simple-view-element-header">{{ label | translate }}</h2>
+        <div class="simple-view-element-body">
+          <!-- Iterate over metadata values and generate search links -->
+          @for (mdValue of item?.allMetadata(fields); track mdValue; let last = $last) {
+            <a routerLink="/search" [queryParams]="generateSearchParams(splitLink(mdValue.value).keyword, index)"
+              [innerHTML]="splitLink(mdValue.value).keyword">
+            </a>
+            @if (splitLink(mdValue.value)?.link) {
+              <a target="_blank" rel="noopener noreferrer"
+                href="{{ splitLink(mdValue.value).link }}"
+                ngbTooltip="AGROVOC">
+                <img src="assets/cgiar/images/AGROVOC-logo.gif" class="agrovoc-image">
+              </a>
+            }
+            @if (!last) {
+              <span class="separator" [innerHTML]="separator"></span>
+            }
+          }
+        </div>
       </div>
-    </div>
-  </ds-metadata-field-wrapper>
-</div>
+    </ds-metadata-field-wrapper>
+  </div>
+}

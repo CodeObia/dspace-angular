@@ -1,11 +1,24 @@
 import { Component } from '@angular/core';
 
 import { ItemPageMetadataSearchLinkFieldComponent } from '../metadata-search-link/item-page-metadata-search-link-field.component';
+import {
+  MetadataFieldWrapperComponent
+} from "../../../../../shared/metadata-field-wrapper/metadata-field-wrapper.component";
+import {TranslateModule} from "@ngx-translate/core";
+import {RouterLink} from "@angular/router";
+import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'ds-item-page-agrovoc',
   styleUrls: ['./item-page-agrovoc-field.component.scss'],
-  templateUrl: './item-page-agrovoc-field.component.html'
+  templateUrl: './item-page-agrovoc-field.component.html',
+  standalone: true,
+  imports: [
+    MetadataFieldWrapperComponent,
+    TranslateModule,
+    RouterLink,
+    NgbTooltipModule
+  ]
 })
 /**
  * This component renders a Discovery search link for a metadata value in addition to link to AGROVOC.

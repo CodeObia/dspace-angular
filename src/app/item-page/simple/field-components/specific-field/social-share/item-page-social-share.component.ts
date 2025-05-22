@@ -2,11 +2,18 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { ItemPageFieldComponent } from '../item-page-field.component';
 import { Item } from '../../../../../core/shared/item.model';
+import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
+import {CdkCopyToClipboard} from "@angular/cdk/clipboard";
 
 @Component({
   selector: 'ds-item-page-social-share',
   styleUrls: ['./item-page-social-share.component.scss'],
-  templateUrl: './item-page-social-share.component.html'
+  templateUrl: './item-page-social-share.component.html',
+  standalone: true,
+  imports: [
+    NgbTooltipModule,
+    CdkCopyToClipboard
+  ]
 })
 /**
  * This component renders social share kit

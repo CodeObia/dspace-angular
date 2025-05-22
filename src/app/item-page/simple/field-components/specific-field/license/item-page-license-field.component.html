@@ -1,24 +1,30 @@
-<div class="item-page-field" *ngIf="item?.allMetadata(fields).length">
-  <div class="simple-view-element">
-    <h2 class="simple-view-element-header">{{ label | translate }}</h2>
-    <div class="simple-view-element-body">
-      <!-- Iterate over metadata values and send them to the correct template -->
-      <ng-container *ngFor="let mdValue of item?.allMetadata(fields)">
-        <ng-container *ngIf="parseLicense(mdValue.value) !== ''"
-                      [ngTemplateOutlet]="ccIcon"
-                      [ngTemplateOutletContext]="{value: mdValue.value}">
-        </ng-container>
-        <ng-container *ngIf="parseLicense(mdValue.value) === ''"
-                      [ngTemplateOutlet]="license"
-                      [ngTemplateOutletContext]="{value: mdValue.value}">
-        </ng-container>
-      </ng-container>
+@if (item?.allMetadata(fields).length) {
+  <div class="item-page-field">
+    <div class="simple-view-element">
+      <h2 class="simple-view-element-header">{{ label | translate }}</h2>
+      <div class="simple-view-element-body">
+        <!-- Iterate over metadata values and send them to the correct template -->
+        @for (mdValue of item?.allMetadata(fields); track mdValue) {
+          @if (parseLicense(mdValue.value) !== '') {
+            <ng-container
+              [ngTemplateOutlet]="ccIcon"
+              [ngTemplateOutletContext]="{value: mdValue.value}">
+            </ng-container>
+          }
+          @if (parseLicense(mdValue.value) === '') {
+            <ng-container
+              [ngTemplateOutlet]="license"
+              [ngTemplateOutletContext]="{value: mdValue.value}">
+            </ng-container>
+          }
+        }
+      </div>
     </div>
   </div>
-</div>
+}
 
 <!-- Render the Creative Commons license icon.
-     See: https://creativecommons.org/about/downloads/
+See: https://creativecommons.org/about/downloads/
 -->
 <ng-template #ccIcon let-value="value">
   <img [ngbTooltip]="value"

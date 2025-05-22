@@ -2,11 +2,20 @@ import { Component, Input } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import {TranslateModule} from "@ngx-translate/core";
+import {NgTemplateOutlet} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'ds-item-page-sdg-field',
   styleUrls: ['./item-page-sdg-field.component.scss'],
-  templateUrl: './item-page-sdg-field.component.html'
+  templateUrl: './item-page-sdg-field.component.html',
+  standalone: true,
+  imports: [
+    TranslateModule,
+    NgTemplateOutlet,
+    RouterLink
+  ]
 })
 /**
  * This component renders a UN SDG icon.

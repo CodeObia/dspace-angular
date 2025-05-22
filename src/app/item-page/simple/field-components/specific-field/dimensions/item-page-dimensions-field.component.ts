@@ -2,10 +2,15 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'ds-item-page-dimensions-field',
-  templateUrl: './item-page-dimensions-field.component.html'
+  templateUrl: './item-page-dimensions-field.component.html',
+  standalone: true,
+  imports: [
+    NgTemplateOutlet
+  ]
 })
 /**
  * This component renders a Dimensions badge.

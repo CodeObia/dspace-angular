@@ -11,7 +11,8 @@ import {isPlatformBrowser} from "@angular/common";
 @Component({
   selector: 'ds-item-page-map',
   styleUrls: ['./item-page-map.component.scss'],
-  templateUrl: './item-page-map.component.html'
+  templateUrl: './item-page-map.component.html',
+  standalone: true,
 })
 /**
  * This component renders countries on the map.

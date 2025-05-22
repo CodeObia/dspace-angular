@@ -5,10 +5,17 @@ import { ItemPageFieldComponent } from '../item-page-field.component';
 import { APP_CONFIG, AppConfig } from '../../../../../../config/app-config.interface';
 import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
 import { BrowseService } from '../../../../../core/browse/browse.service';
+import {
+  MetadataUriValuesComponent
+} from "../../../../field-components/metadata-uri-values/metadata-uri-values.component";
 
 @Component({
   selector: 'ds-item-page-other-uri-field',
-  templateUrl: './item-page-other-uri-field.component.html'
+  templateUrl: './item-page-other-uri-field.component.html',
+  standalone: true,
+  imports: [
+    MetadataUriValuesComponent
+  ]
 })
 /**
  * This component can be used to represent any uri on a simple item page.

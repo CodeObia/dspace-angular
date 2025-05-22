@@ -12,13 +12,22 @@ import HighchartsMore from 'highcharts/highcharts-more';
 import BoostModule from 'highcharts/modules/boost';
 import MapModule from 'highcharts/modules/map';
 import treemapModule from 'highcharts/modules/treemap';
+import {AsyncPipe} from "@angular/common";
+import {LoadingComponent} from "../../../themes/custom/app/shared/loading/loading.component";
+import {HighchartsChartModule} from "highcharts-angular";
 
 const mapWorld = require('./world-palestine-morocco-highres.json');
 
 @Component({
   selector: 'ds-stats-charts',
   styleUrls: ['./stats-charts.component.scss'],
-  templateUrl: './stats-charts.component.html'
+  templateUrl: './stats-charts.component.html',
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    LoadingComponent,
+    HighchartsChartModule
+  ]
 })
 /**
  * This component renders stats disaggregation charts
