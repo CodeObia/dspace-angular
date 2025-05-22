@@ -11,6 +11,7 @@
 # for example via 'docker-compose-rest.yml'
 networks:
   dspacenet:
+    name: dspacenet
     external: true
 
 services:
