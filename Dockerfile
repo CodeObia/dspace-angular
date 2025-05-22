@@ -1,7 +1,7 @@
 # This image will be published as dspace/dspace-angular
 # See https://github.com/DSpace/dspace-angular/tree/main/docker for usage details
 
-FROM node:20-alpine
+FROM node:24-alpine
 
 # Ensure Python and other build tools are available
 # These are needed to install some node modules, lo
@@ -26,7 +26,7 @@ COPY config/config.prod.yml /app/config/config.prod.yml
 COPY config/nginx-default.conf /etc/nginx/conf.d/default.conf
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV NODE_VERSION 20.18.0
+ENV NODE_VERSION 24.18.0
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH

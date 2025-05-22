@@ -11,11 +11,13 @@
 # for example via 'docker-compose-rest.yml'
 networks:
   dspacenet:
+    external: true
+
 services:
   dspace-angular:
     restart: unless-stopped
     container_name: dspace-angular
-    image: dspace/dspace-angular:dspace-7_x
+    image: dspace/dspace-angular:dspace-8_x
     build:
       context: .
       dockerfile: Dockerfile
