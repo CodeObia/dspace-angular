@@ -4,6 +4,7 @@ import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {NgTemplateOutlet} from "@angular/common";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'ds-item-page-license-field',
@@ -12,7 +13,8 @@ import {NgTemplateOutlet} from "@angular/common";
   standalone: true,
   imports: [
     TranslateModule,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    NgbModule
   ]
 })
 /**

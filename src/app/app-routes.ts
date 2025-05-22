@@ -266,6 +266,11 @@ export const APP_ROUTES: Route[] = [
           .then((m) => m.ROUTES),
         canActivate: [authenticatedGuard],
       },
+      {
+        path: 'datasets',
+        loadChildren: () => import('./datasets-page/datasets-page-routes')
+          .then((m) => m.ROUTES),
+      },
       { path: '**', pathMatch: 'full', component: ThemedPageNotFoundComponent },
     ],
   },

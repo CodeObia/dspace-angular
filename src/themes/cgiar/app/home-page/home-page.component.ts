@@ -1,11 +1,33 @@
 import { Component } from '@angular/core';
 import { HomePageComponent as BaseComponent } from '../../../../app/home-page/home-page.component';
 import { CardSettings } from '../../../../app/shared/cards/card-settings.type';
+import {ThemedHomeNewsComponent} from "../../../../app/home-page/home-news/themed-home-news.component";
+import {CardsComponent} from "../../../../app/shared/cards/cards.component";
+import {TranslateModule} from "@ngx-translate/core";
+import {RecentItemListComponent} from "../../../../app/home-page/recent-item-list/recent-item-list.component";
+import {HomeCoarComponent} from "../../../../app/home-page/home-coar/home-coar.component";
+import {ThemedSearchFormComponent} from "../../../../app/shared/search-form/themed-search-form.component";
+import {NgIf, NgTemplateOutlet} from "@angular/common";
+import {
+  ThemedConfigurationSearchPageComponent
+} from "../../../../app/search-page/themed-configuration-search-page.component";
 
 @Component({
   selector: 'ds-home-page',
   styleUrls: ['./home-page.component.scss'],
-  templateUrl: './home-page.component.html'
+  templateUrl: './home-page.component.html',
+  imports: [
+    ThemedHomeNewsComponent,
+    CardsComponent,
+    TranslateModule,
+    RecentItemListComponent,
+    HomeCoarComponent,
+    ThemedSearchFormComponent,
+    NgIf,
+    NgTemplateOutlet,
+    ThemedConfigurationSearchPageComponent
+  ],
+  standalone: true
 })
 export class HomePageComponent extends BaseComponent {
   topPageCardsSettings: CardSettings[] = [

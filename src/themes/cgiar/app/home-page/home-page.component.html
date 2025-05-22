@@ -1,39 +1,58 @@
-<ds-themed-home-news></ds-themed-home-news>
+<ds-home-coar></ds-home-coar>
+<ds-home-news></ds-home-news>
 <div class="container">
-  <ng-container *ngIf="(site$ | async) as site">
-    <ds-view-tracker [object]="site"></ds-view-tracker>
-  </ng-container>
+  @if (topPageCardsSettings) {
+    <ds-cards
+      [cardsSettings]="topPageCardsSettings"
+      [cardHeader]="''"
+      [cardsPerRow]="5"
+      [isLargeImage]="false"
+      [chartsEnabled]="false"
+      [collectionsCards]="false">
+    </ds-cards>
+  }
 
-  <ds-cards *ngIf="topPageCardsSettings"
-            [cardsSettings]="topPageCardsSettings"
-            [cardHeader]="''"
-            [cardsPerRow]="5"
-            [isLargeImage]="false"
-            [chartsEnabled]="false"
-            [collectionsCards]="false">
-  </ds-cards>
+  @if (impactAreasCardsSettings) {
+    <ds-cards
+      [cardsSettings]="impactAreasCardsSettings"
+      [cardHeader]="'search.filters.filter.impact_area.head'"
+      [cardsPerRow]="5"
+      [isLargeImage]="true"
+      [chartsEnabled]="false"
+      [collectionsCards]="false">
+    </ds-cards>
+  }
 
-  <ds-cards *ngIf="impactAreasCardsSettings"
-            [cardsSettings]="impactAreasCardsSettings"
-            [cardHeader]="'search.filters.filter.impact_area.head'"
-            [cardsPerRow]="5"
-            [isLargeImage]="true"
-            [chartsEnabled]="false"
-            [collectionsCards]="false">
-  </ds-cards>
-
-  <ds-themed-search-form [inPlaceSearch]="false"
-                         [searchPlaceholder]="'home.search-form.placeholder' | translate"></ds-themed-search-form>
+  <ds-search-form [inPlaceSearch]="false"
+  [searchPlaceholder]="'home.search-form.placeholder' | translate"></ds-search-form>
   <!--  <ds-themed-top-level-community-list></ds-themed-top-level-community-list>-->
 
-  <ds-cards *ngIf="chartsCardsSettings"
-            [cardsSettings]="chartsCardsSettings"
-            [cardHeader]="''"
-            [cardsPerRow]="5"
-            [isLargeImage]="false"
-            [chartsEnabled]="true"
-            [collectionsCards]="false">
-  </ds-cards>
+  @if (chartsCardsSettings) {
+    <ds-cards
+      [cardsSettings]="chartsCardsSettings"
+      [cardHeader]="''"
+      [cardsPerRow]="5"
+      [isLargeImage]="false"
+      [chartsEnabled]="true"
+      [collectionsCards]="false">
+    </ds-cards>
+  }
 
-  <ds-recent-item-list *ngIf="recentSubmissionspageSize>0"></ds-recent-item-list>
+  @if (showDiscoverFilters) {
+    <div class="d-flex flex-row border-bottom mb-4 pb-4 ng-tns-c169055882-8"></div>
+    <ds-configuration-search-page
+      [sideBarWidth]="3"
+      [showViewModes]="false"
+      [searchEnabled]="false"
+      [inPlaceSearch]="false"
+      [showScopeSelector]="false">
+      @if (recentSubmissionspageSize > 0) {
+        <ds-recent-item-list></ds-recent-item-list>
+      }
+    </ds-configuration-search-page>
+  } @else {
+    @if (recentSubmissionspageSize > 0) {
+      <ds-recent-item-list></ds-recent-item-list>
+    }
+  }
 </div>

@@ -2,71 +2,94 @@
   <div class="position-absolute ml-1">
     <ng-content></ng-content>
   </div>
-  <a *ngIf="linkType !== linkTypes.None" [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-     [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
-     class="card-img-top full-width" [attr.title]="'search.results.view-result' | translate">
-    <div>
-      <ds-thumbnail [externalThumbnail]="dso.firstMetadataValue('mel.file.thumbnail')"
-                    [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-      </ds-thumbnail>
-    </div>
-  </a>
-  <span *ngIf="linkType === linkTypes.None" class="card-img-top full-width">
-        <div>
-              <ds-thumbnail [externalThumbnail]="dso.firstMetadataValue('mel.file.thumbnail')"
-                            [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-              </ds-thumbnail>
-        </div>
+  @if (linkType !== linkTypes.None) {
+    <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
+      class="card-img-top full-width" [attr.title]="'search.results.view-result' | translate">
+      <div>
+        <ds-thumbnail [externalThumbnail]="dso.firstMetadataValue('mel.file.thumbnail')"
+          [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
+        </ds-thumbnail>
+      </div>
+    </a>
+  }
+  @if (linkType === linkTypes.None) {
+    <span class="card-img-top full-width">
+      <div>
+        <ds-thumbnail [externalThumbnail]="dso.firstMetadataValue('mel.file.thumbnail')"
+          [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
+        </ds-thumbnail>
+      </div>
     </span>
+  }
   <div class="card-body">
     <ds-truncatable [id]="dso.id">
-      <ds-truncatable [id]="dso.id">
-        <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
-          <h4 class="card-title" [innerHTML]="dsoTitle"></h4>
-        </ds-truncatable-part>
-        <ds-truncatable-part [id]="dso.id" [minLines]="1">
-        <span *ngIf="dso.allMetadata(['dc.creator', 'dc.contributor']).length > 0" class="item-list-authors">
-          <span *ngFor="let author of allMetadataValues(['dc.creator', 'dc.contributor']); let last=last;">
-            <a routerLink="/search" [queryParams]="generateSearchParams(author, 'author')">
-              <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
-            </a>
-            <span *ngIf="!last">; </span>
+      <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
+        <h4 class="card-title" [innerHTML]="dsoTitle"></h4>
+      </ds-truncatable-part>
+      <ds-truncatable-part [id]="dso.id" [minLines]="1">
+        @if (dso.allMetadata(['dc.creator', 'dc.contributor']).length > 0) {
+          <span class="item-list-authors">
+            @for (author of allMetadataValues(['dc.creator', 'dc.contributor']); track author; let last = $last) {
+              <span>
+                <a routerLink="/search" [queryParams]="generateSearchParams(author, 'author')">
+                  <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
+                </a>
+                @if (!last) {
+                  <span>; </span>
+                }
+              </span>
+            }
           </span>
+        }
+      </ds-truncatable-part>
+      <ds-truncatable-part [id]="dso.id" [minLines]="1">
+        @if (dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dcterms.issued')) {
+          (@if (dso.firstMetadataValue('dc.publisher')) {
+          <span class="item-list-publisher"
+          [innerHTML]="firstMetadataValue('dc.publisher')"></span>
+        }
+        @if (dso.firstMetadataValue('dc.publisher') && dso.firstMetadataValue('dcterms.issued')) {
+          <span>, </span>
+        }
+        @if (dso.firstMetadataValue('dcterms.issued')) {
+          <span class="item-list-date"
+          [innerHTML]="firstMetadataValue('dcterms.issued')"></span>
+          })
+        }
+      </ds-truncatable-part>
+      @if (dso.firstMetadataValue('dc.type')) {
+        <span class="text-muted">
+          <a routerLink="/search" [queryParams]="generateSearchParams(firstMetadataValue('dc.type'), 'itemtype')">
+            <span [innerHTML]="firstMetadataValue('dc.type')"></span>
+          </a>
         </span>
-        </ds-truncatable-part>
-        <ds-truncatable-part [id]="dso.id" [minLines]="1">
-          <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dcterms.issued')">
-            (<span *ngIf="dso.firstMetadataValue('dc.publisher')" class="item-list-publisher"
-                   [innerHTML]="firstMetadataValue('dc.publisher')"></span>
-            <span *ngIf="dso.firstMetadataValue('dc.publisher') && dso.firstMetadataValue('dcterms.issued')">, </span>
-            <span *ngIf="dso.firstMetadataValue('dcterms.issued')" class="item-list-date"
-                  [innerHTML]="firstMetadataValue('dcterms.issued')"></span>)
-          </ng-container>
-        </ds-truncatable-part>
-        <span *ngIf="dso.firstMetadataValue('dc.type')" class="text-muted">
-        <a routerLink="/search" [queryParams]="generateSearchParams(firstMetadataValue('dc.type'), 'itemtype')">
-          <span [innerHTML]="firstMetadataValue('dc.type')"></span>
-        </a>
-      </span>
-        <span *ngIf="dso.firstMetadataValue('dcterms.available')" class="text-muted">
-        (<span [innerHTML]="firstMetadataValue('dcterms.available')"></span>)
-      </span>
-        <span *ngIf="dso.firstMetadataValue('dc.identifier.status')" class="text-muted">
-        - <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.identifier.status')"></span>
-      </span>
-        <div *ngIf="dso.firstMetadataValue('dc.description.abstract')"
-             class="item-list-abstract unicode-bidi-text justify-text">
+      }
+      @if (dso.firstMetadataValue('dcterms.available')) {
+        <span class="text-muted">
+          (<span [innerHTML]="firstMetadataValue('dcterms.available')"></span>)
+        </span>
+      }
+      @if (dso.firstMetadataValue('dc.identifier.status')) {
+        <span class="text-muted">
+          - <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.identifier.status')"></span>
+        </span>
+      }
+      @if (dso.firstMetadataValue('dc.description.abstract')) {
+        <div
+          class="item-list-abstract unicode-bidi-text justify-text">
           <ds-truncatable-part [id]="dso.id" [minLines]="3">
             <span [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>
           </ds-truncatable-part>
         </div>
-      </ds-truncatable>
-      <div *ngIf="linkType !== linkTypes.None" class="text-center">
+      }
+    </ds-truncatable>
+    @if (linkType !== linkTypes.None) {
+      <div class="text-right">
         <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-           [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-           [routerLink]="[itemPageRoute]"
-           class="lead btn btn-primary viewButton">{{ 'search.results.view-result' | translate }}</a>
+          [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
+        class="lead btn btn-primary viewButton">{{ 'search.results.view-result' | translate }}</a>
       </div>
+    }
   </div>
   <ng-content></ng-content>
 </div>

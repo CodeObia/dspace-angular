@@ -1,16 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../app/shared/shared.module';
-import { StatisticsModule } from '../../app/statistics/statistics.module';
-import { HomePageModule } from '../../app/home-page/home-page.module';
-import { ItemPageModule } from '../../app/item-page/item-page.module';
 import { HomePageComponent } from './app/home-page/home-page.component';
 import { HomeNewsComponent } from './app/home-page/home-news/home-news.component';
 import { SearchFormComponent } from './app/shared/search-form/search-form.component';
 import { FullItemPageComponent } from './app/item-page/full/full-item-page.component';
 import { ItemStatisticsPageComponent } from './app/statistics-page/item-statistics-page/item-statistics-page.component';
-
-import { ItemSharedModule } from '../../app/item-page/item-shared.module';
-import { DsoPageModule } from '../../app/shared/dso-page/dso-page.module';
 
 const DECLARATIONS = [
   HomePageComponent,
@@ -21,16 +14,7 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
-    ItemSharedModule,
-    ItemPageModule,
-    HomePageModule,
-    DsoPageModule,
-    SharedModule,
-    StatisticsModule,
-  ],
-  declarations: DECLARATIONS,
-  imports: [...DECLARATIONS],
+    imports: [...DECLARATIONS],
 })
 
   /**
