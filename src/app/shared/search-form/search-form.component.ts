@@ -116,6 +116,11 @@ export class SearchFormComponent implements OnChanges {
   updateSearch(data: any) {
     const goToFirstPage = { 'spc.page': 1 };
 
+    // Force search with lower case
+    if (data?.query) {
+      data.query = data.query.toLowerCase();
+    }
+
     const queryParams = Object.assign(
       {
         ...goToFirstPage
