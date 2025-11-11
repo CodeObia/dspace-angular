@@ -1,27 +1,33 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  AfterViewInit,
+  Renderer2,
+  ElementRef,
+  OnInit,
+} from '@angular/core';
+import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-definition-data.service';
+import { BrowseService } from '../../../../../core/browse/browse.service';
 
 import { Item } from '../../../../../core/shared/item.model';
 import { ItemPageFieldComponent } from '../item-page-field.component';
 
 @Component({
   selector: 'ds-item-page-altmetric-field',
-  templateUrl: './item-page-altmetric-field.component.html'
+  templateUrl: './item-page-altmetric-field.component.html',
 })
 /**
  * This component renders an Altmetric badge.
  * It expects 2 parameters: The item and the popover placement
  */
-export class ItemPageAltmetricFieldComponent extends ItemPageFieldComponent implements AfterViewInit {
-  // Is this hacky? It feels hacky. I can't figure out any other way to load the
-  // Altmetric embed.js *after* Angular finishes rendering the DOM.
-  ngAfterViewInit() {
-    // Altmetric embed.js
-    import('./embed.js');
-    try {
-      window['_altmetric_embed_init']();
-    } catch {
-
-    }
+export class ItemPageAltmetricFieldComponent extends ItemPageFieldComponent implements OnInit, AfterViewInit {
+  constructor(
+    private readonly renderer: Renderer2,
+    private readonly elementRef: ElementRef,
+    protected browseDefinitionDataService: BrowseDefinitionDataService,
+    protected browseService: BrowseService,
+  ) {
+    super(browseDefinitionDataService, browseService);
   }
 
   /**
@@ -33,6 +39,21 @@ export class ItemPageAltmetricFieldComponent extends ItemPageFieldComponent impl
    * Popover placement
    */
   @Input() badgePopover: string;
+
+  ngOnInit() {
+    const scriptTag = this.renderer.createElement(
+      'script',
+    ) as HTMLScriptElement;
+    scriptTag.src = `https://embed.altmetric.com/assets/embed.js`;
+    scriptTag.async = true;
+    this.renderer.appendChild(this.elementRef.nativeElement, scriptTag);
+  }
+
+  ngAfterViewInit() {
+    try {
+      (window as any)._altmetric_embed_init();
+    } catch {}
+  }
 
   /**
    * Helper function to extract the DOI itself from a URI. Should return the
