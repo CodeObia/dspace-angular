@@ -29,6 +29,8 @@
 
   "search.filters.applied.f.initiative": "CGIAR Initiative",
 
+  "search.filters.applied.f.scienceprogram": "CGIAR Science program",
+
   "search.filters.applied.f.impact_area": "CGIAR Impact Area",
 
   "search.filters.applied.f.action_area": "CGIAR Action Area",
@@ -96,6 +98,12 @@
   "search.filters.filter.initiative.placeholder": "CGIAR Initiative",
 
   "search.filters.filter.initiative.label": "Search CGIAR Initiative",
+
+  "search.filters.filter.scienceprogram.head": "CGIAR Science program",
+
+  "search.filters.filter.scienceprogram.placeholder": "CGIAR Science program",
+
+  "search.filters.filter.scienceprogram.label": "Search CGIAR Science program",
 
   "search.filters.filter.impact_area.head": "CGIAR Impact Area",
 
