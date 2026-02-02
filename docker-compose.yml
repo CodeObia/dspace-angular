@@ -10,7 +10,8 @@
 # Requires also running a REST API backend (either locally or remotely),
 # for example via 'docker-compose-rest.yml'
 networks:
-  dspacenet:
+  dspace_dspacenet:
+    external: true
 services:
   dspace-angular:
     restart: unless-stopped
@@ -27,7 +28,7 @@ services:
         node ./dist/server/main.js
     working_dir: /app
     networks:
-      dspacenet:
+      dspace_dspacenet:
     ports:
     - published: 4000
       target: 80
