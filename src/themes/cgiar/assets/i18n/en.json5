@@ -7,6 +7,8 @@
 
   "menu.section.browse_global_by_itemtype": "By Item Type",
 
+  "menu.section.browse_global_by_scienceprogram": "By Science program",
+
   "menu.section.browse_global_by_initiative": "By Initiative",
 
   "menu.section.browse_global_by_crp": "By CRP",
@@ -16,6 +18,8 @@
   "menu.section.browse_global_by_country": "By Country",
 
   "browse.metadata.itemtype.breadcrumbs": "Browse by Item Type",
+
+  "browse.metadata.scienceprogram.breadcrumbs": "Browse by Science program",
 
   "browse.metadata.initiative.breadcrumbs": "Browse by Initiative",
 
@@ -27,11 +31,15 @@
 
   "browse.metadata.itemtype": "Item Type",
 
+  "browse.metadata.scienceprogram": "Science program",
+
   "browse.metadata.initiative": "Initiative",
 
   "browse.metadata.crp": "CRP",
 
   "browse.metadata.researchProgram": "Research Program",
+
+  "browse.metadata.researchProgram.scienceprogram": "Browse by Science program",
 
   "browse.metadata.researchProgram.initiative": "Browse by Initiative",
 
@@ -40,6 +48,8 @@
   "browse.metadata.country": "Country",
 
   "browse.comcol.by.itemtype": "By Item Type",
+
+  "browse.comcol.by.scienceprogram": "By Science program",
 
   "browse.comcol.by.initiative": "By Initiative",
 
@@ -61,6 +71,8 @@
   "search.filters.applied.f.crp": "CGIAR Research Program",
 
   "search.filters.applied.f.initiative": "CGIAR Initiative",
+
+  "search.filters.applied.f.scienceprogram": "CGIAR Science program",
 
   "search.filters.applied.f.impact_area": "CGIAR Impact Area",
 
@@ -107,6 +119,12 @@
   "search.filters.filter.initiative.placeholder": "CGIAR Initiative",
 
   "search.filters.filter.initiative.label": "Search CGIAR Initiative",
+
+  "search.filters.filter.scienceprogram.head": "CGIAR Science program",
+
+  "search.filters.filter.scienceprogram.placeholder": "CGIAR Science program",
+
+  "search.filters.filter.scienceprogram.label": "Search CGIAR Science program",
 
   "search.filters.filter.impact_area.head": "CGIAR Impact Area",
 
