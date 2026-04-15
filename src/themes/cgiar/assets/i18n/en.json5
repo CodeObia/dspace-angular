@@ -185,5 +185,7 @@
 
   "sorting.dcterms.available.ASC": "Date Ascending",
 
-  "sorting.dcterms.available.DESC": "Date Descending"
+  "sorting.dcterms.available.DESC": "Date Descending",
+
+  "info.feedback.info": "Thanks for sharing your feedback. Use the form below to flag metadata issues, suggest improvements to repository features, or assess the usability of the MELSpace repository. Your contributions help us continuously improve the quality and accessibility of our research data."
 }
