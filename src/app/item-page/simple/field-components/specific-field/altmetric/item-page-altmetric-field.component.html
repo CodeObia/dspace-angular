@@ -3,16 +3,16 @@
     <div class="simple-view-element-body">
       <ng-container [ngTemplateOutlet]="altmetricBadgeDoi"
                     [ngTemplateOutletContext]="{
-                                                itemDoi: item?.firstMetadataValue('cg.identifier.doi'),
+                                                itemDoi: item?.firstMetadataValue('dc.identifier.doi'),
                                               }"
-                    *ngIf="item?.firstMetadataValue('cg.identifier.doi')">
+                    *ngIf="item?.firstMetadataValue('dc.identifier.doi')">
       </ng-container>
       <!-- This should be safe because all DSpace items have a handle -->
       <ng-container [ngTemplateOutlet]="altmetricBadgeHandle"
                     [ngTemplateOutletContext]="{
-                                                itemHandle: item?.firstMetadataValue('dc.identifier.uri'),
+                                                itemHandle: item?.firstMetadataValue('dc.identifier.doi'),
                                               }"
-                    *ngIf="!item?.firstMetadataValue('cg.identifier.doi')">
+                    *ngIf="!item?.firstMetadataValue('dc.identifier.doi')">
       </ng-container>
     </div>
   </div>
