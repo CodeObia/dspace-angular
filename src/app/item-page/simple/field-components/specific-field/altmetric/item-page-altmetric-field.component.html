@@ -10,9 +10,9 @@
       <!-- This should be safe because all DSpace items have a handle -->
       <ng-container [ngTemplateOutlet]="altmetricBadgeHandle"
                     [ngTemplateOutletContext]="{
-                                                itemHandle: item?.firstMetadataValue('dc.identifier.doi'),
+                                                itemHandle: item?.firstMetadataValue('dc.identifier.uri'),
                                               }"
-                    *ngIf="!item?.firstMetadataValue('dc.identifier.doi')">
+                    *ngIf="!item?.firstMetadataValue('dc.identifier.uri')">
       </ng-container>
     </div>
   </div>
