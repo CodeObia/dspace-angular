@@ -12,7 +12,7 @@
                     [ngTemplateOutletContext]="{
                                                 itemHandle: item?.firstMetadataValue('dc.identifier.uri'),
                                               }"
-                    *ngIf="!item?.firstMetadataValue('dc.identifier.uri')">
+                    *ngIf="!item?.firstMetadataValue('dc.identifier.doi')">
       </ng-container>
     </div>
   </div>
